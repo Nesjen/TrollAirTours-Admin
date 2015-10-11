@@ -19,7 +19,7 @@ $EmployeeID = $GLOBALS["employeeID"];
 
     <!-- Listing all customers -->
     <div class="col-md-12" class="text-right" style="width: 100%;">
-        <h2>Existing Employees</h2>
+        
         
         
         <table class="table table-striped">

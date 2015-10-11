@@ -21,6 +21,8 @@ class Router {
         switch ($page) {
             case "flight":
                 return new FlightController();
+            
+            
                 
             case "aircraft":
             case "addAircraft":
@@ -31,6 +33,10 @@ class Router {
             case "addEmployee":    
                 return new EmployeeController();
                 
+                
+            case "destination":
+            case "addDestination":
+                return new DestinationController();    
                 
             case "home":
             default:
