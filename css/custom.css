@@ -1,0 +1,23 @@
+body {
+  padding-top: 50px;
+
+}
+
+
+container
+{
+    padding-top:50px;
+}
+
+
+
+.col-md-4 a
+{
+    display:block;
+    border: 1px solid black;
+    color:inherit;
+    padding-top: 1em;
+    padding-left: 0em;
+    padding-right: 0em;
+}
+
