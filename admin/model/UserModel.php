@@ -39,7 +39,7 @@ class UserModel {
      * @return bool true on success, false otherwise
      */
     public function add($givenUsername,$givenPassword) {
-        return $this->addStmt->execute(array("givenUsername" => $givenUsername,"givenPassword" => $givenPassword));
+        return $this->addStmt->execute(array("givenUsername" => $givenUsername,"givenPassword" => sha1($givenPassword)));
     }
     
     
