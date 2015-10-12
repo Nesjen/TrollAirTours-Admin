@@ -42,11 +42,11 @@
                 <form action="?page=login_action" method="post">
                     <div class="form-group">
                         <label for="inputUsername" class="sr-only"></label>
-                        <input type="text" name="username" class="form-control" placeholder="Username"
+                        <input type="text" name="givenAdminUsername" class="form-control" placeholder="Username"
                               required>
                         
                         <label for="inputPassword" class="sr-only"></label>
-                        <input type="password" name="password" class="form-control" placeholder="Password"
+                        <input type="password" name="givenAdminPassword" class="form-control" placeholder="Password"
                                required>
                         
                     </div>

@@ -4,7 +4,7 @@ class UserModel {
     
     private $dbConn;
 
-    const TABLE = "User";
+    const TABLE = "adminUsers";
     const SELECT_QUERY = "SELECT * FROM " . UserModel::TABLE;
     const INSERT_QUERY = "INSERT INTO " . UserModel::TABLE . " (Username,Password) VALUES (:givenUsername,:givenPassword)";
     const DELETE_QUERY = "DELETE FROM" . UserModel::TABLE . " WHERE EmployeeID= ?";
@@ -16,9 +16,9 @@ class UserModel {
 
     public function __construct(PDO $dbConn) {
         $this->dbConn = $dbConn;
-        $this->addStmt = $this->dbConn->prepare(EmployeeModel::INSERT_QUERY);
-        $this->selStmt = $this->dbConn->prepare(EmployeeModel::SELECT_QUERY);
-        $this->delStmt = $this->dbConn->prepare(EmployeeModel::DELETE_QUERY);
+        $this->addStmt = $this->dbConn->prepare(UserModel::INSERT_QUERY);
+        $this->selStmt = $this->dbConn->prepare(UserModel::SELECT_QUERY);
+        $this->delStmt = $this->dbConn->prepare(UserModel::DELETE_QUERY);
     }
 
     /**

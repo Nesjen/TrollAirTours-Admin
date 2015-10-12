@@ -22,16 +22,27 @@ class LoginController extends Controller {
     
     public function loginAction()
     {
+        $givenAdminUsername = $_REQUEST["givenAdminUsername"];
+        $givenAdminPassword = $_REQUEST["givenAdminPassword"];
         
-        $userModel = $GLOBALS["UserModel"];
+        $userModel = $GLOBALS["userModel"];
         $Users = $userModel->getAll();
 
 
         foreach($Users as $User)
         {
-           echo $User["Username"];
+           if($User["Username"] == $givenAdminUsername)
+           {
+               if( $User["Password"] == $givenAdminPassword)
+               {
+                   $_SESSION["AreLoggedIn"] = "true";
+                   echo 'hello';
+               }
+                   
+           }
         }
         
+        header("Location:admin/");
  
         
     }
