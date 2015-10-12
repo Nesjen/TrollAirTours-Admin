@@ -25,10 +25,11 @@ class LoginController extends Controller {
         
         $userModel = $GLOBALS["UserModel"];
         $Users = $userModel->getAll();
-        
+
+
         foreach($Users as $User)
         {
-           echo $User;
+           echo $User["Username"];
         }
         
  
