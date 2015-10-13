@@ -50,7 +50,7 @@ $adminUsers = $GLOBALS["adminUsers"];
                         <input type="text" name="givenAdminUsername" class="form-control" placeholder="Username"
                               required>
                         <label for="inputAdminPassword" class="sr-only">Password</label>
-                        <input type="text" name="givenAdminPassword" class="form-control" placeholder="Password"
+                        <input type="password" name="givenAdminPassword" class="form-control" placeholder="Password"
                               required>
                         
                     </div>
