@@ -36,7 +36,9 @@ class Router {
                 case "flight":
                     return new FlightController();
 
-
+                case "adminUser":
+                case "addAdminUser":
+                    return new AdminUserController();
 
                 case "aircraft":
                 case "addAircraft":

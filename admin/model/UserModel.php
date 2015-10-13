@@ -6,8 +6,8 @@ class UserModel {
 
     const TABLE = "adminUsers";
     const SELECT_QUERY = "SELECT * FROM " . UserModel::TABLE;
-    const INSERT_QUERY = "INSERT INTO " . UserModel::TABLE . " (Username,Password) VALUES (:givenUsername,:givenPassword)";
-    const DELETE_QUERY = "DELETE FROM" . UserModel::TABLE . " WHERE EmployeeID= ?";
+    const INSERT_QUERY = "INSERT INTO " . UserModel::TABLE . " (Username,Password) VALUES (:givenAdminUsername,:givenAdminPassword)";
+    const DELETE_QUERY = "DELETE FROM" . UserModel::TABLE . " WHERE Username= ?";
 
     /** @var PDOStatement Statement for selecting all entries */
     private $selStmt;
@@ -38,8 +38,8 @@ class UserModel {
      *
      * @return bool true on success, false otherwise
      */
-    public function add($givenUsername,$givenPassword) {
-        return $this->addStmt->execute(array("givenUsername" => $givenUsername,"givenPassword" => sha1($givenPassword)));
+    public function add($givenAdminUsername,$givenAdminPassword) {
+        return $this->addStmt->execute(array("givenAdminUsername" => $givenAdminUsername,"givenAdminPassword" => sha1($givenAdminPassword)));
     }
     
     

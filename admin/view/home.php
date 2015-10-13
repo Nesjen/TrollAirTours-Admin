@@ -60,9 +60,9 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="?page=employee">
+                <a href="?page=adminUser">
                     <img class="center-block" src="image/usericon.png">
-                    <h3 class="row text-center">User Manager</h3>
+                    <h3 class="row text-center">AdminUser Manager</h3>
                 </a>
             </div>
             

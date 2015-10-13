@@ -27,7 +27,7 @@ class LoginController extends Controller {
         
         $userModel = $GLOBALS["userModel"];
         $Users = $userModel->getAll();
-        //$userModel->add("enesje","test1234"); !! USE THIS FOR FIRST LOGIN !! 
+        //$userModel->add("enesje","test1234");// !! USE THIS FOR FIRST LOGIN !! 
 
         foreach($Users as $User)
         {
