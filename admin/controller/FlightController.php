@@ -23,6 +23,9 @@ class FlightController extends Controller {
 
         $aircraftModel = $GLOBALS["aircraftModel"];
         $aircrafts = $aircraftModel->getAll();
+        
+        $flightCrewModel = $GLOBALS["aircraftCrewModel"];
+        $FlightCrews = $flightCrewModel->getAll();
 
         $tempFlightID = isset($_REQUEST["FlightID"]) ? $_REQUEST["FlightID"] : "";
         $FlightID = htmlspecialchars($tempFlightID);
@@ -31,6 +34,7 @@ class FlightController extends Controller {
             "flights" => $flights,
             "FlightID" => $FlightID,
             "aircrafts" => $aircrafts,
+            "flightCrews" => $FlightCrews,
         );
         
         return $this->render("flight", $data);
@@ -44,6 +48,7 @@ class FlightController extends Controller {
         $FlightDate = $_REQUEST["givenFlightDate"];
         $givenDeparture = $_REQUEST["givenDeparture"];
         $givenTourType = $_REQUEST["givenTourType"];
+        $givenEmployeeIDFK = $_REQUEST["givenEmployeeIDFK"];
         if (!$givenFlightID) {
             return $this->showFlightAction();
         }
