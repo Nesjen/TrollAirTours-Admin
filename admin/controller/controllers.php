@@ -8,5 +8,6 @@ require_once("EmployeeController.php");
 require_once("AircraftController.php");
 require_once("DestinationController.php");
 require_once("AdminUserController.php");
+require_once("FlightController.php");
 
 

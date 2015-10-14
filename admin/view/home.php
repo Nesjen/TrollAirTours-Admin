@@ -7,7 +7,7 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="#">
+                <a href="?page=flight">
                     <img class="center-block" src="image/flighttimeicon.png">
                     <h3 class="row text-center">Flight Departures</h3>
                 </a>

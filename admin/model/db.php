@@ -4,6 +4,7 @@ require_once("EmployeeModel.php");
 require_once("AircraftModel.php");
 require_once("DestinationModel.php");
 require_once("UserModel.php");
+require_once("FlightModel.php");
 
 // TODO - change the DB connection here (if it's Microsoft SQL server or other non-MySQL DB)
 // Create DB connection
@@ -16,5 +17,6 @@ $employeeModel = new EmployeeModel($dbConn);
 $aircraftModel = new AircraftModel($dbConn);
 $destinationModel = new DestinationModel($dbConn);
 $userModel = new UserModel($dbConn);
+$flightModel = new FlightModel($dbConn);
 // TODO - create new models here. First create them as a new class
 // TODO - once you have more model classes, perhaps some of the functions can be moved to a common parent class?
