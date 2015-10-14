@@ -52,7 +52,7 @@ $aircraftsfk = $GLOBALS["aircrafts"];
                 <form action="?page=addFlight" method="post">
                     <div class="form-group">
                         <label for="inputRegIDFK" class="sr-only">Aircraft RegID</label>
-                        <select name="givenFlightDate" class="form-control" id="sel1" required>
+                        <select name="givenRegIDFK" class="form-control" id="sel1" required>
                            <option>Select Aircraft</option>
                             <?php foreach($aircraftsfk as $aircraftfk): ?> 
                                     <option><?php echo $aircraftfk["RegID"]; ?></option>

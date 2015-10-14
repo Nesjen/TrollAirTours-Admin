@@ -5,7 +5,7 @@ $added = $GLOBALS["added"];
 ?>
 
 <?php if ($added) { 
-header("Location:?page=aircraft");
+header("Location:?page=flight");
 }else{?>
 <h1>Could not add Flight</h1>
 <?php } ?>

@@ -32,7 +32,8 @@ class Router {
                 case "login":
                 case "login_action":
                     return new LoginController();
-
+                    
+                case "addFlight":
                 case "flight":
                     return new FlightController();
 
