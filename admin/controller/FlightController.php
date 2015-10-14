@@ -21,6 +21,8 @@ class FlightController extends Controller {
         $flightModel = $GLOBALS["flightModel"];
         $flights = $flightModel->getAll();
 
+        $aircraftModel = $GLOBALS["aircraftModel"];
+        $aircrafts = $aircraftModel->getAll();
 
         $tempFlightID = isset($_REQUEST["FlightID"]) ? $_REQUEST["FlightID"] : "";
         $FlightID = htmlspecialchars($tempFlightID);
@@ -28,7 +30,7 @@ class FlightController extends Controller {
         $data = array(
             "flights" => $flights,
             "FlightID" => $FlightID,
-            
+            "aircrafts" => $aircrafts,
         );
         
         return $this->render("flight", $data);

@@ -9,7 +9,7 @@
 // $customerName - last value used in "Add customer" form
 $Flights = $GLOBALS["flights"];
 $FlightID = $GLOBALS["FlightID"];
-
+$aircraftsfk = $GLOBALS["aircrafts"];
 
 ?>
 
@@ -51,13 +51,24 @@ $FlightID = $GLOBALS["FlightID"];
             <div class="col-sm-6" style="width: 100%;">
                 <form action="?page=addFlight" method="post">
                     <div class="form-group">
+                        <label for="inputRegIDFK" class="sr-only">Aircraft RegID</label>
+                        <select name="givenFlightDate" class="form-control" id="sel1" required>
+                           <option>Select Aircraft</option>
+                            <?php foreach($aircraftsfk as $aircraftfk): ?> 
+                                    <option><?php echo $aircraftfk["RegID"]; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        
+                        
                         <label for="inputFlightID" class="sr-only">FlightID</label>
                         <input type="text" name="givenFlightID" class="form-control" placeholder="FlightID"
                               required>
                         
-                        <label for="inputRegIDFK" class="sr-only">Aircraft RegID</label>
+                        
+                        
+<!--                        <label for="inputRegIDFK" class="sr-only">Aircraft RegID</label>
                         <input type="text" name="givenRegIDFK" class="form-control" placeholder="RegID"
-                               required>
+                               required>-->
                         
                         <label for="inputFlightDate" class="sr-only">FlightDate</label>
                         <input type="text" name="givenFlightDate" class="form-control" placeholder="FlightDate"
