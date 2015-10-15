@@ -9,9 +9,7 @@ class UserModel {
     const INSERT_QUERY = "INSERT INTO " . UserModel::TABLE . " (Username,Password) VALUES (:givenAdminUsername,:givenAdminPassword)";
     const DELETE_QUERY = "DELETE FROM" . UserModel::TABLE . " WHERE Username= ?";
 
-    /** @var PDOStatement Statement for selecting all entries */
     private $selStmt;
-    /** @var PDOStatement Statement for adding new entries */
     private $addStmt;
 
     public function __construct(PDO $dbConn) {
@@ -21,29 +19,16 @@ class UserModel {
         $this->delStmt = $this->dbConn->prepare(UserModel::DELETE_QUERY);
     }
 
-    /**
-     * Get all customers stored in the DB
-     * @return array in associative form
-     */
+
     public function getAll() {
-        // Fetch all customers as associative arrays
         $this->selStmt->execute();
         return $this->selStmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * Try to add a new customer
-     *
-     * @param 
-     *
-     * @return bool true on success, false otherwise
-     */
     public function add($givenAdminUsername,$givenAdminPassword) {
         return $this->addStmt->execute(array("givenAdminUsername" => $givenAdminUsername,"givenAdminPassword" => sha1($givenAdminPassword)));
     }
     
-    
-
-    // TODO - create additional functions for customer model here
+   
 
 }

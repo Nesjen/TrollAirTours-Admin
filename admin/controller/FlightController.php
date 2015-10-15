@@ -24,17 +24,17 @@ class FlightController extends Controller {
         $aircraftModel = $GLOBALS["aircraftModel"];
         $aircrafts = $aircraftModel->getAll();
         
-        $flightCrewModel = $GLOBALS["aircraftCrewModel"];
+       $employeeModel = $GLOBALS["employeeModel"];
+       $employees = $employeeModel->getAll();
+        
+        $flightCrewModel = $GLOBALS["flightCrewModel"];
         $FlightCrews = $flightCrewModel->getAll();
-
-        $tempFlightID = isset($_REQUEST["FlightID"]) ? $_REQUEST["FlightID"] : "";
-        $FlightID = htmlspecialchars($tempFlightID);
         
         $data = array(
             "flights" => $flights,
-            "FlightID" => $FlightID,
             "aircrafts" => $aircrafts,
             "flightCrews" => $FlightCrews,
+            "employees" => $employees,
         );
         
         return $this->render("flight", $data);
@@ -42,25 +42,28 @@ class FlightController extends Controller {
     
     
     private function addFlightAction() {
-        // Find "customerName" parameter in request,
         $givenFlightID = $_REQUEST["givenFlightID"];
         $givenRegIDFK = $_REQUEST["givenRegIDFK"];
         $FlightDate = $_REQUEST["givenFlightDate"];
         $givenDeparture = $_REQUEST["givenDeparture"];
         $givenTourType = $_REQUEST["givenTourType"];
-        $givenEmployeeIDFK = $_REQUEST["givenEmployeeIDFK"];
+        $givenPilotIDFK = $_REQUEST["givenPilotIDFK"];
+        $givenGuideIDFK = $_REQUEST["givenGuideIDFK"];
+        
         if (!$givenFlightID) {
             return $this->showFlightAction();
         }
-
-        // Try to add new customer, Set action response code - success or not
-        /** @var CustomerModel $customerModel */
+        
         $flightModel = $GLOBALS["flightModel"];
         $added = $flightModel->add($givenFlightID,$givenRegIDFK,$FlightDate,$givenDeparture,$givenTourType);
 
-        // Render the page
+        $flightCrewModel = $GLOBALS["flightCrewModel"];
+        $added2 = $flightCrewModel->add($givenPilotIDFK,$givenGuideIDFK,$givenFlightID);
+        
+        
         $data = array(
             "added" => $added,
+            "added2" => $added2,
             "givenRegID" => $givenFlightID,
         );
         return $this->render("flightAdd", $data);

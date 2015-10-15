@@ -1,17 +1,11 @@
 <?php
-//////////////////////////////////////////
-// Template for customer listing page
-//////////////////////////////////////////
-
-// TODO - initialize necessary variables here (remember to pass them in the controller's render() function)
-// Expected variables:
-// $customers - list of all customers
-// $customerName - last value used in "Add customer" form
 $Flights = $GLOBALS["flights"];
-$FlightID = $GLOBALS["FlightID"];
 $aircraftsfk = $GLOBALS["aircrafts"];
+$FlightCrews = $GLOBALS["flightCrews"];
+$employees2 = $GLOBALS["employees"];
 
 ?>
+
 
 <h1>Flights</h1>
 
@@ -27,6 +21,8 @@ $aircraftsfk = $GLOBALS["aircrafts"];
                 <th>FlightDate</th>
                 <th>Departure</th>
                 <th>TourType</th>
+                <th>Pilot</th>
+                <th>Guide</th>
             </tr>
             </thead>
             <tbody>
@@ -59,16 +55,26 @@ $aircraftsfk = $GLOBALS["aircrafts"];
                             <?php endforeach; ?>
                         </select>
                         
+                        <label for="inputPilotIDFK" class="sr-only">PilotID</label>
+                        <select name="givenPilotIDFK" class="form-control" id="sel1" required>
+                           <option>Select Pilot</option>
+                            <?php foreach($employees2 as $Employee): ?> 
+                                    <option><?php echo $Employee["FirstName"] , " " , $Employee["LastName"];  ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        
+                        <select name="givenGuideIDFK" class="form-control" id="sel1" required>
+                           <option>Select Guide</option>
+                            <?php foreach($employees2 as $Employee): ?> 
+                                    <option><?php echo $Employee["FirstName"] , " " , $Employee["LastName"];  ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        
+                        
                         
                         <label for="inputFlightID" class="sr-only">FlightID</label>
                         <input type="text" name="givenFlightID" class="form-control" placeholder="FlightID"
                               required>
-                        
-                        
-                        
-<!--                        <label for="inputRegIDFK" class="sr-only">Aircraft RegID</label>
-                        <input type="text" name="givenRegIDFK" class="form-control" placeholder="RegID"
-                               required>-->
                         
                         <label for="inputFlightDate" class="sr-only">FlightDate</label>
                         <input type="text" name="givenFlightDate" class="form-control" placeholder="FlightDate"
