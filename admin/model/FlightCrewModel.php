@@ -9,9 +9,8 @@ class FlightCrewModel {
     const INSERT_QUERY = "INSERT INTO " . FlightCrewModel::TABLE . " (FlightID,EmployeeID) VALUES (:FlightIDFK,:EmployeeIDFK)";
     const DELETE_QUERY = "DELETE FROM" . FlightCrewModel::TABLE . " WHERE FlightID= ?";
 
-    /** @var PDOStatement Statement for selecting all entries */
+
     private $selStmt;
-    /** @var PDOStatement Statement for adding new entries */
     private $addStmt;
 
     public function __construct(PDO $dbConn) {
@@ -21,25 +20,21 @@ class FlightCrewModel {
         $this->delStmt = $this->dbConn->prepare(FlightCrewModel::DELETE_QUERY);
     }
 
-    /**
-     * Get all aircraft stored in the DB
-     * @return array in associative form
-     */
     public function getAll() {
         // Fetch all Aircraft as associative arrays
         $this->selStmt->execute();
         return $this->selStmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * Try to add a new aircraft
-     *
-     * @param 
-     *
-     * @return bool true on success, false otherwise
-     */
-    public function add($givenFlightIDFK,$givenEmployeeIDFK) {
+    public function addSingle($givenFlightIDFK,$givenEmployeeIDFK) {
         return $this->addStmt->execute(array("FlightIDFK" => $givenFlightIDFK,"EmployeeIDFK" => $givenEmployeeIDFK));
+    }
+    
+    public function addDual($givenPilotIDFK,$givenGuideIDFK,$givenFlightID)
+    {
+         $this->addStmt->execute(array("FlightIDFK" => $givenFlightID,"EmployeeIDFK" => $givenPilotIDFK));
+         $this->addStmt->execute(array("FlightIDFK" => $givenFlightID,"EmployeeIDFK" => $givenGuideIDFK));
+        
     }
     
 

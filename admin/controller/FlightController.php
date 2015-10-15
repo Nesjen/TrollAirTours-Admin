@@ -58,12 +58,13 @@ class FlightController extends Controller {
         $added = $flightModel->add($givenFlightID,$givenRegIDFK,$FlightDate,$givenDeparture,$givenTourType);
 
         $flightCrewModel = $GLOBALS["flightCrewModel"];
-        $added2 = $flightCrewModel->add($givenPilotIDFK,$givenGuideIDFK,$givenFlightID);
+        //$added2 = $flightCrewModel->
+        $flightCrewModel->addDual($givenPilotIDFK,$givenGuideIDFK,$givenFlightID);
         
         
         $data = array(
             "added" => $added,
-            "added2" => $added2,
+           // "added2" => $added2,
             "givenRegID" => $givenFlightID,
         );
         return $this->render("flightAdd", $data);
