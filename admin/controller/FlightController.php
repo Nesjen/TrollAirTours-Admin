@@ -23,15 +23,42 @@ class FlightController extends Controller {
         
        $employeeModel = $GLOBALS["employeeModel"];
        $employees = $employeeModel->getAll();
+       $pilots = $employeeModel->getAllWherePosition(array("Pilot"));
+       $guides = $employeeModel->getAllWherePosition(array("Guide"));
         
         $flightCrewModel = $GLOBALS["flightCrewModel"];
         $FlightCrews = $flightCrewModel->getAll();
+        $flightsWithFK = array(
+            array("FlightID" => "22", "test" => 1),
+            array("FlightID" => "21", "test" => 3),
+        );
+        
+        foreach($flightsWithFK as $test)
+        {
+            echo $test["FlightID"] . $test["test"];
+        }
+        
+        $flightWFK = Array();
+        
+        foreach($flights as $flight)
+        {
+            foreach($employees as $employee)
+            {
+                if($employee[EmployeeID] == )
+            }
+            
+            $flightTemp =  $flight + $pilots 
+            $flightWFK +=
+        }
+        
         
         
         $data = array(
             "flights" => $flights,
             "aircrafts" => $aircrafts,
             "flightCrews" => $FlightCrews,
+            "pilots" => $pilots,
+            "guides" => $guides,
             "employees" => $employees,
         );
         
@@ -57,7 +84,7 @@ class FlightController extends Controller {
 
         $flightCrewModel = $GLOBALS["flightCrewModel"];
         //$added2 = $flightCrewModel->
-        echo $givenPilotIDFK . " " .  $givenFlightID ;
+        
         $added2 = $flightCrewModel->addDual($givenPilotIDFK,$givenGuideIDFK,$givenFlightID);
         
         

@@ -19,5 +19,15 @@ container
     padding-top: 1em;
     padding-left: 0em;
     padding-right: 0em;
+    box-shadow:  4px 4px #555555;
 }
+
+.col-md-4 a:hover
+{
+    border: 1px solid green;
+    text-decoration: none;
+    color:green;
+    
+}
+
 

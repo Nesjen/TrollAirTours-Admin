@@ -2,8 +2,9 @@
 $Flights = $GLOBALS["flights"];
 $aircraftsfk = $GLOBALS["aircrafts"];
 $FlightCrews = $GLOBALS["flightCrews"];
-$employees2 = $GLOBALS["employees"];
-
+$Employees = $GLOBALS["employees"];
+$pilots = $GLOBALS["pilots"];
+$guides = $GLOBALS["guides"];
 ?>
 
 
@@ -36,7 +37,7 @@ $employees2 = $GLOBALS["employees"];
                           <?php foreach($FlightCrews as $FlightCrew) :
                               if($FlightCrew["FlightID"] ==$Flight["FlightID"] )
                               { ?>
-                                  <td><?php echo $FlightCrew["EmployeeID"]; ?> </td>   
+                                  <td><?php echo $Employees[$FlightCrew["EmployeeID"]]; ?> </td>   
                               <?php } ?>
                           <?php  endforeach; ?>
                   </tr>
@@ -64,15 +65,15 @@ $employees2 = $GLOBALS["employees"];
                         <label for="inputPilotIDFK" class="sr-only">PilotID</label>
                         <select name="givenPilotIDFK" class="form-control" id="sel1" required>
                            <option>Select Pilot</option>
-                            <?php foreach($employees2 as $Employee): ?> 
-                                    <option><?php echo $Employee["EmployeeID"];  ?></option>
+                            <?php foreach($pilots as $pilot): ?> 
+                                    <option><?php echo $pilot["EmployeeID"];  ?></option>
                             <?php endforeach; ?>
                         </select>
                         
                         <select name="givenGuideIDFK" class="form-control" id="sel1" required>
                            <option>Select Guide</option>
-                            <?php foreach($employees2 as $Employee): ?> 
-                                    <option><?php echo $Employee["EmployeeID"];  ?></option>
+                            <?php foreach($guides as $guide): ?> 
+                                    <option><?php echo $guide["EmployeeID"];  ?></option>
                             <?php endforeach; ?>
                         </select>
                         
