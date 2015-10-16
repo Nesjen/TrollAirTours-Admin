@@ -26,15 +26,21 @@ $employees2 = $GLOBALS["employees"];
             </tr>
             </thead>
             <tbody>
-          <?php foreach($Flights as $Flight): ?>
-          <tr>
-                  <td><?php echo $Flight["FlightID"]; ?></td>
-                  <td><?php echo $Flight["RegID"]; ?></td>
-                  <td><?php echo $Flight["FlightDate"]; ?></td>
-                  <td><?php echo $Flight["Departure"]; ?></td>
-                  <td><?php echo $Flight["TourType"]; ?></td>
-          </tr>
-    <?php endforeach; ?>
+                <?php foreach($Flights as $Flight): ?>
+                  <tr>
+                          <td><?php echo $Flight["FlightID"]; ?></td>
+                          <td><?php echo $Flight["RegID"]; ?></td>
+                          <td><?php echo $Flight["FlightDate"]; ?></td>
+                          <td><?php echo $Flight["Departure"]; ?></td>
+                          <td><?php echo $Flight["TourType"]; ?></td>
+                          <?php foreach($FlightCrews as $FlightCrew) :
+                              if($FlightCrew["FlightID"] ==$Flight["FlightID"] )
+                              { ?>
+                                  <td><?php echo $FlightCrew["EmployeeID"]; ?> </td>   
+                              <?php } ?>
+                          <?php  endforeach; ?>
+                  </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
         
@@ -59,14 +65,14 @@ $employees2 = $GLOBALS["employees"];
                         <select name="givenPilotIDFK" class="form-control" id="sel1" required>
                            <option>Select Pilot</option>
                             <?php foreach($employees2 as $Employee): ?> 
-                                    <option><?php echo $Employee["FirstName"] , " " , $Employee["LastName"];  ?></option>
+                                    <option><?php echo $Employee["EmployeeID"];  ?></option>
                             <?php endforeach; ?>
                         </select>
                         
                         <select name="givenGuideIDFK" class="form-control" id="sel1" required>
                            <option>Select Guide</option>
                             <?php foreach($employees2 as $Employee): ?> 
-                                    <option><?php echo $Employee["FirstName"] , " " , $Employee["LastName"];  ?></option>
+                                    <option><?php echo $Employee["EmployeeID"];  ?></option>
                             <?php endforeach; ?>
                         </select>
                         

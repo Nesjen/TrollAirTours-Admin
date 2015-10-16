@@ -4,10 +4,7 @@ require_once("Controller.php");
 
 class FlightController extends Controller {
 
-    /**
-     * Shows all possible pages
-     * @param string $page
-     */
+
     public function show($page) {
         if ($page == "addFlight") {
             $this->addFlightAction();
@@ -29,6 +26,7 @@ class FlightController extends Controller {
         
         $flightCrewModel = $GLOBALS["flightCrewModel"];
         $FlightCrews = $flightCrewModel->getAll();
+        
         
         $data = array(
             "flights" => $flights,
@@ -59,12 +57,13 @@ class FlightController extends Controller {
 
         $flightCrewModel = $GLOBALS["flightCrewModel"];
         //$added2 = $flightCrewModel->
-        $flightCrewModel->addDual($givenPilotIDFK,$givenGuideIDFK,$givenFlightID);
+        echo $givenPilotIDFK . " " .  $givenFlightID ;
+        $added2 = $flightCrewModel->addDual($givenPilotIDFK,$givenGuideIDFK,$givenFlightID);
         
         
         $data = array(
             "added" => $added,
-           // "added2" => $added2,
+            "added2" => $added2,
             "givenRegID" => $givenFlightID,
         );
         return $this->render("flightAdd", $data);
