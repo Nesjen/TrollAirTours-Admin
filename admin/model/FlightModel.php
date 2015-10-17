@@ -1,12 +1,14 @@
 <?php
 
+require_once("FlightCrewModel.php");
+
 class FlightModel {
     
     private $dbConn;
 
     const TABLE = "Flight";
     const SELECT_QUERY = "SELECT * FROM " . FlightModel::TABLE;
-    const SELECT_QUERY_WFK = "SELECT * FROM " . FlightModel::TABLE . "INNER JOIN" . FlightCrewModel::TABLE . "ON Flight.FlightID=FlightCrew.FlightID";         
+    const SELECT_QUERY_WFK = "SELECT * FROM " . FlightModel::TABLE . " INNER JOIN FlightCrew ON Flight.FlightID=FlightCrew.FlightID INNER JOIN Employee ON Flightcrew.EmployeeID=Employee.EmployeeID";
     const INSERT_QUERY = "INSERT INTO " . FlightModel::TABLE . " (FlightID,RegID,FlightDate,Departure,TourType) VALUES (:FlightID,:RegID,:FlightDate,:Departure,:TourType)";
     const DELETE_QUERY = "DELETE FROM" . FlightModel::TABLE . " WHERE FlightID= ?";
 

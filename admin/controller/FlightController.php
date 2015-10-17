@@ -29,41 +29,14 @@ class FlightController extends Controller {
         
         $flightCrewModel = $GLOBALS["flightCrewModel"];
         $FlightCrews = $flightCrewModel->getAll();
+       
+       
         
-        foreach($flightFK as $flightFKs)
-        {
-            echo "FlightID: " .$flightFKs["FlightID"] . "  Employee:" . $flightFKs["FirstName"];  
-        }
-        
-        $flightWFK = Array();
-        
-//        foreach($flights as $flight) //Iterate all flight rows
-//        {
-//            foreach($FlightCrews as $Flightcrew) //Iterate all flightcrew rows
-//            {
-//                if( $Flightcrew["FlightID"] == $flight["FlightID"] )  // Got the right row for flightcrew
-//                {
-//                    $tmpEmployee = $employeeModel->getAllWhereEmployeeID($Flightcrew["EmployeeID"]);
-//                    if($tmpEmployee["Position"] == "Pilot")
-//                    {
-//                      $pilot = $tmpEmployee;
-//                    }else if($tmpEmployee["Position"] == "Guide")
-//                    {
-//                      $guide = $tmpEmployee;  
-//                    }
-//                    
-//                    $flightWFK += $flight . $pilot .  $guide;
-//                   
-//                }
-//            }
-//            
-//        }
-        
-        
-        
-        
+
+           
         $data = array(
             "flights" => $flights,
+            "flightFK" => $flightFK,
             "aircrafts" => $aircrafts,
             "flightCrews" => $FlightCrews,
             "pilots" => $pilots,
