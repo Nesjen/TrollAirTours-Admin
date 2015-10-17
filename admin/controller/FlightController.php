@@ -17,7 +17,8 @@ class FlightController extends Controller {
     private function showFlightAction() {
         $flightModel = $GLOBALS["flightModel"];
         $flights = $flightModel->getAll();
-
+        $flightFK = $flightModel->getAllWithFK();
+        
         $aircraftModel = $GLOBALS["aircraftModel"];
         $aircrafts = $aircraftModel->getAll();
         
@@ -28,28 +29,36 @@ class FlightController extends Controller {
         
         $flightCrewModel = $GLOBALS["flightCrewModel"];
         $FlightCrews = $flightCrewModel->getAll();
-        $flightsWithFK = array(
-            array("FlightID" => "22", "test" => 1),
-            array("FlightID" => "21", "test" => 3),
-        );
         
-        foreach($flightsWithFK as $test)
+        foreach($flightFK as $flightFKs)
         {
-            echo $test["FlightID"] . $test["test"];
+            echo "FlightID: " .$flightFKs["FlightID"] . "  Employee:" . $flightFKs["FirstName"];  
         }
         
         $flightWFK = Array();
         
-        foreach($flights as $flight)
-        {
-            foreach($employees as $employee)
-            {
-                if($employee[EmployeeID] == )
-            }
-            
-            $flightTemp =  $flight + $pilots 
-            $flightWFK +=
-        }
+//        foreach($flights as $flight) //Iterate all flight rows
+//        {
+//            foreach($FlightCrews as $Flightcrew) //Iterate all flightcrew rows
+//            {
+//                if( $Flightcrew["FlightID"] == $flight["FlightID"] )  // Got the right row for flightcrew
+//                {
+//                    $tmpEmployee = $employeeModel->getAllWhereEmployeeID($Flightcrew["EmployeeID"]);
+//                    if($tmpEmployee["Position"] == "Pilot")
+//                    {
+//                      $pilot = $tmpEmployee;
+//                    }else if($tmpEmployee["Position"] == "Guide")
+//                    {
+//                      $guide = $tmpEmployee;  
+//                    }
+//                    
+//                    $flightWFK += $flight . $pilot .  $guide;
+//                   
+//                }
+//            }
+//            
+//        }
+        
         
         
         

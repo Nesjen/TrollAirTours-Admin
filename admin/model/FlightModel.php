@@ -6,6 +6,7 @@ class FlightModel {
 
     const TABLE = "Flight";
     const SELECT_QUERY = "SELECT * FROM " . FlightModel::TABLE;
+    const SELECT_QUERY_WFK = "SELECT * FROM " . FlightModel::TABLE . "INNER JOIN" . FlightCrewModel::TABLE . "ON Flight.FlightID=FlightCrew.FlightID";         
     const INSERT_QUERY = "INSERT INTO " . FlightModel::TABLE . " (FlightID,RegID,FlightDate,Departure,TourType) VALUES (:FlightID,:RegID,:FlightDate,:Departure,:TourType)";
     const DELETE_QUERY = "DELETE FROM" . FlightModel::TABLE . " WHERE FlightID= ?";
 
@@ -13,11 +14,13 @@ class FlightModel {
     private $selStmt;
     /** @var PDOStatement Statement for adding new entries */
     private $addStmt;
+    private $selWFKStmt;
 
     public function __construct(PDO $dbConn) {
         $this->dbConn = $dbConn;
         $this->addStmt = $this->dbConn->prepare(FlightModel::INSERT_QUERY);
         $this->selStmt = $this->dbConn->prepare(FlightModel::SELECT_QUERY);
+        $this->selWFKStmt = $this->dbConn->prepare(FlightModel::SELECT_QUERY_WFK);
         $this->delStmt = $this->dbConn->prepare(FlightModel::DELETE_QUERY);
     }
 
@@ -29,6 +32,12 @@ class FlightModel {
         // Fetch all Aircraft as associative arrays
         $this->selStmt->execute();
         return $this->selStmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function getAllWithFK()
+    {
+       $this->selWFKStmt->execute();
+       return $this->selWFKStmt->fetchAll(PDO::FETCH_ASSOC); 
     }
 
     /**
