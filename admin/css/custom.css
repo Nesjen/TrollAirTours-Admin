@@ -31,3 +31,16 @@ container
 }
 
 
+#loginbox
+{
+    box-shadow:  0.5px 0.5px 3px 3px #666666;
+    border-radius: 10px;
+    
+    
+}
+
+#loginformForm
+{
+    font-style: italic;
+    padding-top: 1em;
+}
