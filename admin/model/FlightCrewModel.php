@@ -9,7 +9,7 @@ class FlightCrewModel {
     const TABLE = "FlightCrew";
     const SELECT_WHERE_QUERY = "SELECT * FROM" . FlightCrewModel::TABLE . " WHERE FlightID= ?";
     const SELECT_QUERY = "SELECT * FROM " . FlightCrewModel::TABLE;
-    const INSERT_QUERY = "INSERT INTO " . FlightCrewModel::TABLE . " (FlightID,EmployeeID,GuideID) VALUES (:FlightIDFK,:EmployeeIDFK)";
+    const INSERT_QUERY = "INSERT INTO " . FlightCrewModel::TABLE . " (FlightID,PilotID,GuideID) VALUES (:FlightIDFK,:EmployeeIDFK)";
 
 
     private $selStmt;
