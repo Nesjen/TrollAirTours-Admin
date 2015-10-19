@@ -30,19 +30,19 @@ class FlightController extends Controller {
         $flightCrewModel = $GLOBALS["flightCrewModel"];
         $FlightCrews = $flightCrewModel->getAll();
        
-//        $flightArray = Array();
+//       $flightArray = Array();
 //        
-//       foreach($flightsFK as $flightFK )
-//       {
+//      foreach($flightsFK as $flightFK )
+//      {
 //           $FlightAR = array();
-//           if($flightFK["Position"] == "Pilot")
+//          if($flightFK["Position"] == "Pilot")
 //           {
 //               $Pilot = $flightFK["employeeID"];
-//           }else if ($flightFK["Position"] == "Guide")
-//           {
-//               $Guide = $flightFK["employeeID"];
-//           }
-//       }
+//         }else if ($flightFK["Position"] == "Guide")
+//          {
+//              $Guide = $flightFK["employeeID"];
+//          }
+//      }
         
 
            
