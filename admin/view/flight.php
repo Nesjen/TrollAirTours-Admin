@@ -4,8 +4,6 @@ $Flights = $GLOBALS["flights"];
 $aircraftsfk = $GLOBALS["aircrafts"];
 $FlightCrews = $GLOBALS["flightCrews"];
 $Employees = $GLOBALS["employees"];
-$pilots = $GLOBALS["pilots"];
-$guides = $GLOBALS["guides"];
 ?>
 
 
@@ -35,6 +33,8 @@ $guides = $GLOBALS["guides"];
                           <td><?php echo $flightFK["FlightDate"]; ?></td>
                           <td><?php echo $flightFK["Departure"]; ?></td>
                           <td><?php echo $flightFK["TourType"]; ?></td>
+                          <td><?php echo $flightFK["LastName"]; ?></td> 
+                          <td><?php echo $flightFK["LastName"]; ?></td>
                           <td><?php echo $flightFK["LastName"]; ?></td> 
                           <td><?php echo $flightFK["LastName"]; ?></td> 
                   </tr>

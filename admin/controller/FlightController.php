@@ -24,8 +24,8 @@ class FlightController extends Controller {
         
        $employeeModel = $GLOBALS["employeeModel"];
        $employees = $employeeModel->getAll();
-       $pilots = $employeeModel->getAllWherePosition(array("Pilot"));
-       $guides = $employeeModel->getAllWherePosition(array("Guide"));
+       //$pilots = $employeeModel->getAllWherePosition(array("Pilot"));
+       //$guides = $employeeModel->getAllWherePosition(array("Guide"));
         
         $flightCrewModel = $GLOBALS["flightCrewModel"];
         $FlightCrews = $flightCrewModel->getAll();
@@ -44,6 +44,7 @@ class FlightController extends Controller {
 //          }
 //      }
         
+   
 
            
         $data = array(
@@ -51,8 +52,8 @@ class FlightController extends Controller {
             "flightFK" => $flightFK,
             "aircrafts" => $aircrafts,
             "flightCrews" => $FlightCrews,
-            "pilots" => $pilots,
-            "guides" => $guides,
+            //"pilots" => $pilots,
+            //"guides" => $guides,
             "employees" => $employees,
         );
         
