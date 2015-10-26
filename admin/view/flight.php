@@ -1,9 +1,12 @@
 <?php
 $flightsFK = $GLOBALS["flightFK"];
 $Flights = $GLOBALS["flights"];
+$flightFkAndNames = $GLOBALS["flightFkAndNames"];
 $aircraftsfk = $GLOBALS["aircrafts"];
 $FlightCrews = $GLOBALS["flightCrews"];
 $Employees = $GLOBALS["employees"];
+$pilots = $GLOBALS["pilots"];
+$guides = $GLOBALS["guides"];
 ?>
 
 
@@ -26,17 +29,15 @@ $Employees = $GLOBALS["employees"];
             </tr>
             </thead>
             <tbody>
-                <?php foreach($flightsFK as $flightFK): ?>
+                <?php foreach($flightFkAndNames as $flightFkAndName): ?>
                   <tr>
-                          <td><?php echo $flightFK["FlightID"]; ?></td>
-                          <td><?php echo $flightFK["RegID"]; ?></td>
-                          <td><?php echo $flightFK["FlightDate"]; ?></td>
-                          <td><?php echo $flightFK["Departure"]; ?></td>
-                          <td><?php echo $flightFK["TourType"]; ?></td>
-                          <td><?php echo $flightFK["LastName"]; ?></td> 
-                          <td><?php echo $flightFK["LastName"]; ?></td>
-                          <td><?php echo $flightFK["LastName"]; ?></td> 
-                          <td><?php echo $flightFK["LastName"]; ?></td> 
+                          <td><?php echo $flightFkAndName["FlightID"]; ?></td>
+                          <td><?php echo $flightFkAndName["RegID"]; ?></td>
+                          <td><?php echo $flightFkAndName["FlightDate"]; ?></td>
+                          <td><?php echo $flightFkAndName["Departure"]; ?></td>
+                          <td><?php echo $flightFkAndName["TourType"]; ?></td>
+                          <td><?php echo $flightFkAndName["PilotFN"] . " " . $flightFkAndName["PilotLN"]; ?></td> 
+                          <td><?php echo $flightFkAndName["GuideFN"] . " " . $flightFkAndName["GuideLN"]; ?></td>
                   </tr>
                 <?php endforeach; ?>
             </tbody>

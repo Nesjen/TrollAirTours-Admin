@@ -33,7 +33,6 @@
 
     <div class="container">
     
-
         
     <div class="col-md-12" style="text-align:center;width: 40%;margin-left:30%;margin-right:30%;margin-top:5%;padding-bottom:5%;box-shadow:  0.5px 0.5px 3px 3px #666666;border-radius: 10px;" >
         <h2>Login</h2>

@@ -9,7 +9,7 @@ class FlightCrewModel {
     const TABLE = "FlightCrew";
     const SELECT_WHERE_QUERY = "SELECT * FROM" . FlightCrewModel::TABLE . " WHERE FlightID= ?";
     const SELECT_QUERY = "SELECT * FROM " . FlightCrewModel::TABLE;
-    const INSERT_QUERY = "INSERT INTO " . FlightCrewModel::TABLE . " (FlightID,PilotID,GuideID) VALUES (:FlightIDFK,:EmployeeIDFK)";
+    const INSERT_QUERY = "INSERT INTO " . FlightCrewModel::TABLE . " (FlightID,PilotID,GuideID) VALUES (:FlightIDFK,:PilotIDFK,:GuideIDFK)";
 
 
     private $selStmt;
@@ -42,8 +42,7 @@ class FlightCrewModel {
     
     public function addDual($givenPilotIDFK,$givenGuideIDFK,$givenFlightID)
     {
-         $this->addStmt->execute(array("FlightIDFK" => $givenFlightID,"EmployeeIDFK" => $givenPilotIDFK));
-         return $this->addStmt->execute(array("FlightIDFK" => $givenFlightID,"EmployeeIDFK" => $givenGuideIDFK));
+         return $this->addStmt->execute(array("FlightIDFK" => $givenFlightID,"PilotIDFK" => $givenPilotIDFK,"GuideIDFK" => $givenGuideIDFK));
         
     }
     

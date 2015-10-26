@@ -7,7 +7,7 @@ class EmployeeModel {
     const TABLE = "Employee";
     const SELECT_QUERY = "SELECT * FROM " . EmployeeModel::TABLE;
     const SELECT_WHERE_QUERY = "SELECT * FROM " . EmployeeModel::TABLE . " WHERE Position = ?";
-    const SELECT_WHERE_ID_QUERY = "SELECT * FROM " . EmployeeModel::TABLE . " WHERE Position = ?";
+    const SELECT_WHERE_ID_QUERY = "SELECT * FROM " . EmployeeModel::TABLE . " WHERE EmployeeID = ?";
     const INSERT_QUERY = "INSERT INTO " . EmployeeModel::TABLE . " (EmployeeID,Position,FirstName,LastName) VALUES (:EmployeeID,:EmployeeP,:EmployeeFN,:EmployeeLN)";
     const DELETE_QUERY = "DELETE FROM" . EmployeeModel::TABLE . " WHERE EmployeeID= ?";
 
@@ -40,7 +40,7 @@ class EmployeeModel {
     
     public function getAllWherePosition($Position) {
         // Fetch all customers as associative arrays
-        $this->selWhereStmt->execute($Position);
+        $this->selWhereStmt->execute(array($Position));
         return $this->selWhereStmt->fetchAll(PDO::FETCH_ASSOC);
     }
     

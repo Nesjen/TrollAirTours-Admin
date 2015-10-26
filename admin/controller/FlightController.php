@@ -18,42 +18,30 @@ class FlightController extends Controller {
         $flightModel = $GLOBALS["flightModel"];
         $flights = $flightModel->getAll();
         $flightFK = $flightModel->getAllWithFK();
+        $flightFkAndNames = $flightModel->getAllWithFkAndNames();
         
         $aircraftModel = $GLOBALS["aircraftModel"];
         $aircrafts = $aircraftModel->getAll();
         
-       $employeeModel = $GLOBALS["employeeModel"];
-       $employees = $employeeModel->getAll();
-       //$pilots = $employeeModel->getAllWherePosition(array("Pilot"));
-       //$guides = $employeeModel->getAllWherePosition(array("Guide"));
-        
+        $employeeModel = $GLOBALS["employeeModel"];
+        $employees = $employeeModel->getAll();
+    
         $flightCrewModel = $GLOBALS["flightCrewModel"];
         $FlightCrews = $flightCrewModel->getAll();
        
-//       $flightArray = Array();
-//        
-//      foreach($flightsFK as $flightFK )
-//      {
-//           $FlightAR = array();
-//          if($flightFK["Position"] == "Pilot")
-//           {
-//               $Pilot = $flightFK["employeeID"];
-//         }else if ($flightFK["Position"] == "Guide")
-//          {
-//              $Guide = $flightFK["employeeID"];
-//          }
-//      }
-        
+        $pilots =  $employeeModel->getAllWherePosition("Pilot");
+        $guides =  $employeeModel->getAllWherePosition("Guide");
    
 
            
         $data = array(
             "flights" => $flights,
             "flightFK" => $flightFK,
+            "flightFkAndNames" => $flightFkAndNames,
             "aircrafts" => $aircrafts,
             "flightCrews" => $FlightCrews,
-            //"pilots" => $pilots,
-            //"guides" => $guides,
+            "pilots" => $pilots,
+            "guides" => $guides,
             "employees" => $employees,
         );
         
@@ -78,7 +66,6 @@ class FlightController extends Controller {
         $added = $flightModel->add($givenFlightID,$givenRegIDFK,$FlightDate,$givenDeparture,$givenTourType);
 
         $flightCrewModel = $GLOBALS["flightCrewModel"];
-        //$added2 = $flightCrewModel->
         
         $added2 = $flightCrewModel->addDual($givenPilotIDFK,$givenGuideIDFK,$givenFlightID);
         

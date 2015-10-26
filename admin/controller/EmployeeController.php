@@ -36,18 +36,14 @@ class EmployeeController extends Controller {
     
     
     private function addEmployeeAction() {
-        // Find "customerName" parameter in request,
         $givenEmployeeID = $_REQUEST["givenEmployeeID"];
         $givenEmployeeFN = $_REQUEST["givenEmployeeFN"];
         $givenEmployeeLN = $_REQUEST["givenEmployeeLN"];
         $givenEmployeeP = $_REQUEST["givenEmployeeP"];
         if (!$givenEmployeeID) {
-            // No customer name supplied, redirect to customer list
             return $this->showCustomersAction();
         }
 
-        // Try to add new customer, Set action response code - success or not
-        /** @var CustomerModel $customerModel */
         $employeeModel = $GLOBALS["employeeModel"];
         $added = $employeeModel->add($givenEmployeeID,$givenEmployeeFN,$givenEmployeeLN,$givenEmployeeP);
 
