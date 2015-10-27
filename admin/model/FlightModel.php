@@ -18,12 +18,13 @@ class FlightModel {
             
     const SELECT_QUERY_WFK = "SELECT * FROM " . FlightModel::TABLE . " INNER JOIN FlightCrew ON Flight.FlightID=FlightCrew.FlightID INNER JOIN Employee ON Flightcrew.EmployeeID=Employee.EmployeeID";
     const INSERT_QUERY = "INSERT INTO " . FlightModel::TABLE . " (FlightID,RegID,FlightDate,Departure,TourType) VALUES (:FlightID,:RegID,:FlightDate,:Departure,:TourType)";
-    const DELETE_QUERY = "DELETE FROM" . FlightModel::TABLE . " WHERE FlightID= ?";
+    const DELETE_QUERY = "DELETE FROM " . FlightModel::TABLE . " WHERE FlightID= ?";
 
     private $selStmt;
     private $selFullFlightStmt;
     private $addStmt;
     private $selWFKStmt;
+    private $delStmt;
 
     public function __construct(PDO $dbConn) {
         $this->dbConn = $dbConn;
@@ -49,6 +50,12 @@ class FlightModel {
     {
        $this->selFullFlightStmt->execute();
        return $this->selFullFlightStmt->fetchAll(PDO::FETCH_ASSOC); 
+    }
+    
+    public function removeFlightWhereID($flightID)
+    {
+       echo "I Was Here";
+       return $this->delStmt->execute(array($flightID)); 
     }
     
 

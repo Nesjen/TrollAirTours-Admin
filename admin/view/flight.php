@@ -38,6 +38,12 @@ $guides = $GLOBALS["guides"];
                           <td><?php echo $flightFkAndName["TourType"]; ?></td>
                           <td><?php echo $flightFkAndName["PilotFN"] . " " . $flightFkAndName["PilotLN"]; ?></td> 
                           <td><?php echo $flightFkAndName["GuideFN"] . " " . $flightFkAndName["GuideLN"]; ?></td>
+                          <td>
+                              <form action="?page=removeFlight" method="post">
+					<input type="hidden" name="givenFlightID"  value="<?php echo $flightFkAndName["FlightID"]; ?>" required>
+					<button class="btn btn-default" type="submit">Remove</button>
+			      </form>
+                          </td>
                   </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -10,6 +10,8 @@ class FlightController extends Controller {
             $this->addFlightAction();
         } else if ($page == "flight") {
             $this->showFlightAction();
+        }else if ($page == "removeFlight") {
+            $this->removeFlightAction();
         }
     }
     
@@ -79,6 +81,20 @@ class FlightController extends Controller {
     }
    
     
-        
+    private function removeFlightAction()
+    {
+        $givenFlightID = $_REQUEST["givenFlightID"];
+        $flightModel = $GLOBALS["flightModel"];
+        $flightCrewModel = $GLOBALS["flightCrewModel"];
+        echo $givenFlightID;
+        $added = $flightModel->removeFlightWhereID($givenFlightID);
+        $added2 = $flightCrewModel->removeFlightWhereID($givenFlightID);
+        $data = array(
+            "added" => $added,
+            "added2" => $added2,
+            "givenFlightID" => $givenFlightID,
+        );
+        return $this->render("flightRemove", $data);
+    }
     
 }

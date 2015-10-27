@@ -34,6 +34,7 @@ class Router {
                     return new LoginController();
                     
                 case "addFlight":
+                case "removeFlight":
                 case "flight":
                     return new FlightController();
 
