@@ -5,7 +5,6 @@ class Router {
     
 
     public function getPage() {
-        // Get page from request, or use default
         if (isset($_REQUEST["page"])) {
             $page = $_REQUEST["page"];
         } else {
@@ -23,11 +22,8 @@ class Router {
     public function getController() {
         $page = $this->getPage();
         
-        if($_SESSION["AreLoggedIn"] == "false")
-        { 
-            return new LoginController();
-        }else{
-            switch ($page) {
+       
+      switch ($page) {
 
                 case "login":
                 case "login_action":
@@ -46,9 +42,15 @@ class Router {
                 case "addAircraft":
                     return new AircraftController();
 
-
+                
+                case "customer":
+                case "addCustomer":
+                case "removeCustomer":
+                    return new CustomerController();
+                    
                 case "employee":
-                case "addEmployee":    
+                case "addEmployee":
+                case "removeEmployee":
                     return new EmployeeController();
 
 
@@ -61,6 +63,6 @@ class Router {
                     return new homeController();
             }
         }
-    }
+    
 
 }
