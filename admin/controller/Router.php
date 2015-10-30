@@ -22,8 +22,9 @@ class Router {
     public function getController() {
         $page = $this->getPage();
         
-       
-      switch ($page) {
+      if((isset($_SESSION["AreLoggedIn"])) && ($_SESSION["AreLoggedIn"] == "true"))
+      {
+          switch ($page) {
 
                 case "login":
                 case "login_action":
@@ -58,6 +59,13 @@ class Router {
                 default:
                     return new homeController();
             }
+          
+      }else
+      {
+          return new LoginController();
+      }
+        
+      
         }
     
 
