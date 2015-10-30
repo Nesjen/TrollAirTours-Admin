@@ -56,7 +56,21 @@ class CustomerController extends Controller {
     {
         $givenCustomerID     =  filter_input(INPUT_POST, "givenCustomerID");
         $customerModel = $GLOBALS["customerModel"];
-        $customerModel->remove($givenCustomerID);
+        $bookingModel = $GLOBALS["bookingModel"];
+        $seatReservationModel = $GLOBALS["seatReservationModel"];
+        
+        $SeatResRemoved = $seatReservationModel->removeBookingWhereCustID($givenCustomerID);
+        $bookingRemoved =  $bookingModel->remove($givenCustomerID);
+        $customerRemoved = $customerModel->remove($givenCustomerID);
+        
+        $data = array(
+            "SeatResRemoved" => $SeatResRemoved,
+            "bookingRemoved" => $bookingRemoved,
+            "customerRemoved" => $customerRemoved
+        );
+                
+        
+        return $this->render("customerRemove", $data);
     }
         
     

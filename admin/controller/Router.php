@@ -54,10 +54,6 @@ class Router {
                     return new EmployeeController();
 
 
-                case "destination":
-                case "addDestination":
-                    return new DestinationController();    
-
                 case "home":
                 default:
                     return new homeController();
