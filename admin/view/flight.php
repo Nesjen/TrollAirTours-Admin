@@ -23,7 +23,7 @@ $guides = $GLOBALS["guides"];
                 <th>AirCraft</th>
                 <th>FlightDate</th>
                 <th>Departure</th>
-                <th>TourType</th>
+                <th>Destination</th>
                 <th>Pilot</th>
                 <th>Guide</th>
             </tr>
@@ -60,7 +60,7 @@ $guides = $GLOBALS["guides"];
                     <div class="form-group">
                         <label for="inputRegIDFK" class="sr-only">Aircraft RegID</label>
                         <select name="givenRegIDFK" class="form-control" id="sel1" required>
-                           <option>Select Aircraft</option>
+                           <option> - Select Aircraft - </option>
                             <?php foreach($aircraftsfk as $aircraftfk): ?> 
                                     <option><?php echo $aircraftfk["RegID"]; ?></option>
                             <?php endforeach; ?>
@@ -68,20 +68,27 @@ $guides = $GLOBALS["guides"];
                         
                         <label for="inputPilotIDFK" class="sr-only">PilotID</label>
                         <select name="givenPilotIDFK" class="form-control" id="sel1" required>
-                           <option>Select Pilot</option>
+                           <option> - Select Pilot - </option>
                             <?php foreach($pilots as $pilot): ?> 
                            <option value="<?php echo $pilot["EmployeeID"]; ?>"><?php echo $pilot["FirstName"] . " " . $pilot["LastName"] ;  ?></option>
                             <?php endforeach; ?>
                         </select>
                         
                         <select name="givenGuideIDFK" class="form-control" id="sel1" required>
-                           <option>Select Guide</option>
+                           <option> - Select Guide - </option>
                             <?php foreach($guides as $guide): ?> 
                                      <option value="<?php echo $guide["EmployeeID"]; ?>"><?php echo $guide["FirstName"] . " " . $guide["LastName"] ;  ?></option>
                             <?php endforeach; ?>
                         </select>
                         
-                        
+                        <label for="inputTourType" class="sr-only">Destination</label>
+                        <select name="givenTourType" class="form-control" id="sel1" required>
+                            <option> - Select Destination - </option>
+                            <option>Geiranger</option>
+                            <option>Briksdalen</option>
+                            <option>Aakneset</option>
+                            <option>Custom</option>
+                        </select>
                         
                         <label for="inputFlightID" class="sr-only">FlightID</label>
                         <input type="text" name="givenFlightID" class="form-control" placeholder="FlightID"
@@ -95,9 +102,8 @@ $guides = $GLOBALS["guides"];
                         <input type="text" name="givenDeparture" class="form-control" placeholder="Departure"
                                 required>
                         
-                        <label for="inputTourType" class="sr-only">TourType</label>
-                        <input type="text" name="givenTourType" class="form-control" placeholder="TourType"
-                                required>
+                     
+                        
                         
                         
                     </div>

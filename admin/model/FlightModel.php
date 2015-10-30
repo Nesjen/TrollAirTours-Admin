@@ -14,7 +14,7 @@ class FlightModel {
                                         INNER JOIN Employee e1
                                         ON fl.PilotID = e1.employeeID
                                         INNER JOIN Employee e2 
-                                        ON fl.GuideID = e2.EmployeeID ";
+                                        ON fl.GuideID = e2.EmployeeID ORDER BY FlightDate";
             
     const SELECT_QUERY_WFK = "SELECT * FROM " . FlightModel::TABLE . " INNER JOIN FlightCrew ON Flight.FlightID=FlightCrew.FlightID INNER JOIN Employee ON Flightcrew.EmployeeID=Employee.EmployeeID";
     const INSERT_QUERY = "INSERT INTO " . FlightModel::TABLE . " (FlightID,RegID,FlightDate,Departure,TourType) VALUES (:FlightID,:RegID,:FlightDate,:Departure,:TourType)";
