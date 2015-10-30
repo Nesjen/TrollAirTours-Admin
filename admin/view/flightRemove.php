@@ -1,13 +1,17 @@
 <?php
 
 $added = $GLOBALS["added"];
+$added2 = $GLOBALS["added2"];
 
 ?>
 
-<?php if ($added) { 
+
+
+
+<?php if (($added) &&($added2)) { 
 header("Location:?page=flight");
 }else{?>
-<h1>Could not add Flight</h1>
+<h1>Could not remove Flight</h1>
 <?php } ?>
 
 

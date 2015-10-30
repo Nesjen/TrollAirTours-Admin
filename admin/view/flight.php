@@ -41,7 +41,7 @@ $guides = $GLOBALS["guides"];
                           <td>
                               <form action="?page=removeFlight" method="post">
 					<input type="hidden" name="givenFlightID"  value="<?php echo $flightFkAndName["FlightID"]; ?>" required>
-					<button class="btn btn-default" type="submit">Remove</button>
+					<button class="btn btn-default" type="submit"> Remove </button>
 			      </form>
                           </td>
                   </tr>

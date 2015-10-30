@@ -7,6 +7,7 @@ require_once("UserModel.php");
 require_once("FlightModel.php");
 require_once("FlightCrewModel.php");
 require_once("CustomerModel.php");
+require_once("SeatReservationModel.php");
 
 $dbConn = new PDO("sqlsrv:Server=$DB_HOST;Database=$DB_NAME", $DB_USER  , $DB_PWD);
 
@@ -19,3 +20,4 @@ $userModel = new UserModel($dbConn);
 $flightModel = new FlightModel($dbConn);
 $flightCrewModel = new FlightCrewModel($dbConn);
 $customerModel = new CustomerModel($dbConn);
+$seatReservationModel = new SeatReservationModel($dbConn);

@@ -34,8 +34,7 @@ class FlightController extends Controller {
         $pilots =  $employeeModel->getAllWherePosition("Pilot");
         $guides =  $employeeModel->getAllWherePosition("Guide");
    
-
-           
+    
         $data = array(
             "flights" => $flights,
             "flightFK" => $flightFK,
@@ -81,17 +80,29 @@ class FlightController extends Controller {
     }
    
     
+    /**
+     * Remove posted flightID.
+     * 
+     * @return type
+     */
     private function removeFlightAction()
     {
-        $givenFlightID = $_REQUEST["givenFlightID"];
+        $givenFlightID = filter_input(INPUT_POST, "givenFlightID");
         $flightModel = $GLOBALS["flightModel"];
         $flightCrewModel = $GLOBALS["flightCrewModel"];
-        echo $givenFlightID;
-        $added = $flightModel->removeFlightWhereID($givenFlightID);
+        $seatReservationModel = $GLOBALS["seatReservationModel"];
+        
+        
         $added2 = $flightCrewModel->removeFlightWhereID($givenFlightID);
+        $added3 = $seatReservationModel->removeFlightWhereID($givenFlightID);
+        $added = $flightModel->removeFlightWhereID($givenFlightID);
+        
+        
+        
         $data = array(
             "added" => $added,
             "added2" => $added2,
+            "added3" => $added3,
             "givenFlightID" => $givenFlightID,
         );
         return $this->render("flightRemove", $data);

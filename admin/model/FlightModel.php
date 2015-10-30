@@ -18,7 +18,7 @@ class FlightModel {
             
     const SELECT_QUERY_WFK = "SELECT * FROM " . FlightModel::TABLE . " INNER JOIN FlightCrew ON Flight.FlightID=FlightCrew.FlightID INNER JOIN Employee ON Flightcrew.EmployeeID=Employee.EmployeeID";
     const INSERT_QUERY = "INSERT INTO " . FlightModel::TABLE . " (FlightID,RegID,FlightDate,Departure,TourType) VALUES (:FlightID,:RegID,:FlightDate,:Departure,:TourType)";
-    const DELETE_QUERY = "DELETE FROM " . FlightModel::TABLE . " WHERE FlightID= ?";
+    const DELETE_QUERY = "DELETE FROM " . FlightModel::TABLE . " WHERE (FlightID)=(:flightID)";
 
     private $selStmt;
     private $selFullFlightStmt;
@@ -54,9 +54,12 @@ class FlightModel {
     
     public function removeFlightWhereID($flightID)
     {
-       echo "I Was Here";
-       return $this->delStmt->execute(array($flightID)); 
+       echo $flightID;
+       return $this->delStmt->execute(array("flightID" => $flightID)); 
     }
+    
+
+    
     
 
     public function add($givenFlightID,$givenRegIDFK,$givenFlightDate,$givenDeparture,$givenTourType) {
