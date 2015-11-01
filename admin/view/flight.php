@@ -24,6 +24,8 @@ $guides = $GLOBALS["guides"];
                 <th>FlightDate</th>
                 <th>Departure</th>
                 <th>Destination</th>
+                <th>Price</th>
+                <th>Seats Available</th>
                 <th>Pilot</th>
                 <th>Guide</th>
             </tr>
@@ -36,6 +38,8 @@ $guides = $GLOBALS["guides"];
                           <td><?php echo $flightFkAndName["FlightDate"]; ?></td>
                           <td><?php echo $flightFkAndName["Departure"]; ?></td>
                           <td><?php echo $flightFkAndName["TourType"]; ?></td>
+                          <td><?php echo $flightFkAndName["FlightPrice"]; ?></td>
+                          <td><?php echo $flightFkAndName["SeatsAvailable"]; ?></td>
                           <td><?php echo $flightFkAndName["PilotFN"] . " " . $flightFkAndName["PilotLN"]; ?></td> 
                           <td><?php echo $flightFkAndName["GuideFN"] . " " . $flightFkAndName["GuideLN"]; ?></td>
                           <td>
@@ -89,6 +93,15 @@ $guides = $GLOBALS["guides"];
                             <option>Aakneset</option>
                             <option>Custom</option>
                         </select>
+                        
+                        <label for="inputFlightPrice" class="sr-only">FlightPrice</label>
+                        <input type="text" name="givenFlightPrice" class="form-control" placeholder="FlightPrice"
+                              required>
+                        
+                        <label for="inputSeatsAvailable" class="sr-only">Seats Available</label>
+                        <input type="text" name="givenSeatsAvailable" class="form-control" placeholder="Seats Available"
+                              required>
+                        
                         
                         <label for="inputFlightID" class="sr-only">FlightID</label>
                         <input type="text" name="givenFlightID" class="form-control" placeholder="FlightID"

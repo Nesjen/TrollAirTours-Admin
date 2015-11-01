@@ -56,6 +56,8 @@ class FlightController extends Controller {
         $FlightDate = $_REQUEST["givenFlightDate"];
         $givenDeparture = $_REQUEST["givenDeparture"];
         $givenTourType = $_REQUEST["givenTourType"];
+        $givenFlightPrice = $_REQUEST["givenFlightPrice"];
+        $givenSeatsAvailable = $_REQUEST["givenSeatsAvailable"];
         $givenPilotIDFK = $_REQUEST["givenPilotIDFK"];
         $givenGuideIDFK = $_REQUEST["givenGuideIDFK"];
         
@@ -64,7 +66,7 @@ class FlightController extends Controller {
         }
         
         $flightModel = $GLOBALS["flightModel"];
-        $added = $flightModel->add($givenFlightID,$givenRegIDFK,$FlightDate,$givenDeparture,$givenTourType);
+        $added = $flightModel->add($givenFlightID,$givenRegIDFK,$FlightDate,$givenDeparture,$givenTourType,$givenFlightPrice,$givenSeatsAvailable);
 
         $flightCrewModel = $GLOBALS["flightCrewModel"];
         

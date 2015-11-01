@@ -8,7 +8,7 @@ class FlightModel {
 
     const TABLE = "Flight";
     const SELECT_QUERY = "SELECT * FROM " . FlightModel::TABLE;
-    const SELECT_FULL_FLIGHT_QUERY =  " Select f.FlightID, f.RegID, f.FlightDate, f.Departure, f.TourType, fl.PilotID,fl.GuideID, e1.FirstName AS PilotFN, e1.LastName AS PilotLN, e2.FirstName AS GuideFN, e2.LastName AS GuideLN FROM " . FlightModel::TABLE ." f
+    const SELECT_FULL_FLIGHT_QUERY =  " Select f.FlightID, f.RegID, f.FlightDate, f.Departure, f.TourType,f.FlightPrice,f.SeatsAvailable, fl.PilotID,fl.GuideID, e1.FirstName AS PilotFN, e1.LastName AS PilotLN, e2.FirstName AS GuideFN, e2.LastName AS GuideLN FROM " . FlightModel::TABLE ." f
                                         INNER JOIN FlightCrew fl
                                 	ON f.FlightID = fl.FlightID
                                         INNER JOIN Employee e1
@@ -17,7 +17,7 @@ class FlightModel {
                                         ON fl.GuideID = e2.EmployeeID ORDER BY FlightDate";
             
     const SELECT_QUERY_WFK = "SELECT * FROM " . FlightModel::TABLE . " INNER JOIN FlightCrew ON Flight.FlightID=FlightCrew.FlightID INNER JOIN Employee ON Flightcrew.EmployeeID=Employee.EmployeeID";
-    const INSERT_QUERY = "INSERT INTO " . FlightModel::TABLE . " (FlightID,RegID,FlightDate,Departure,TourType) VALUES (:FlightID,:RegID,:FlightDate,:Departure,:TourType)";
+    const INSERT_QUERY = "INSERT INTO " . FlightModel::TABLE . " (FlightID,RegID,FlightDate,Departure,TourType,FlightPrice,SeatsAvailable) VALUES (:FlightID,:RegID,:FlightDate,:Departure,:TourType,:FlightPrice,:SeatsAvailable)";
     const DELETE_QUERY = "DELETE FROM " . FlightModel::TABLE . " WHERE (FlightID)=(:flightID)";
 
     private $selStmt;
@@ -59,11 +59,8 @@ class FlightModel {
     }
     
 
-    
-    
-
-    public function add($givenFlightID,$givenRegIDFK,$givenFlightDate,$givenDeparture,$givenTourType) {
-        return $this->addStmt->execute(array("FlightID" => $givenFlightID,"RegID" => $givenRegIDFK,"FlightDate" => $givenFlightDate,"Departure" => $givenDeparture, "TourType" => $givenTourType));
+    public function add($givenFlightID,$givenRegIDFK,$givenFlightDate,$givenDeparture,$givenTourType,$givenFlightPrice,$givenSeatsAvailable) {
+        return $this->addStmt->execute(array("FlightID" => $givenFlightID,"RegID" => $givenRegIDFK,"FlightDate" => $givenFlightDate,"Departure" => $givenDeparture, "TourType" => $givenTourType,"FlightPrice" => $givenFlightPrice, "SeatsAvailable" => $givenSeatsAvailable));
     }
     
 
