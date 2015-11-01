@@ -54,6 +54,7 @@ class Router {
                 case "customer":
                 case "addCustomer":
                 case "removeCustomer":
+                case "getCustomer":
                     return new CustomerController();
                     
                 case "employee":

@@ -6,17 +6,20 @@ class CustomerModel {
     const TABLE = "customer";
     const SELECT_QUERY = "SELECT * FROM " . CustomerModel::TABLE;
     const INSERT_QUERY = " INSERT INTO " . CustomerModel::TABLE . " ( Gender, FirstName, LastName, AreaCode, TelephoneNumber, StreetAddress, City, ZipCode, Email, Country) VALUES ( :Gender,:FirstName,:LastName,:AreaCode,:TelephoneNumber,:StreetAddress,:City,:ZipCode,:Email,:Country)";
+    const SELECT_WHERE_CUSTOMERID_QUERY = "SELECT * FROM " . CustomerModel::TABLE . " WHERE (CustomerID)=(:CustomerID)";
     const DELETE_QUERY = " DELETE FROM " . CustomerModel::TABLE . " WHERE (CustomerID)=(:CustomerID)";   
 
     private $selStmt; // Select Statement
     private $addStmt; // Insert Statement
     private $delStmt;
-
+    private $selWhrcIDStmt;
+    
     public function __construct(PDO $dbConn) {
         $this->dbConn = $dbConn;
         $this->addStmt = $this->dbConn->prepare(CustomerModel::INSERT_QUERY);
         $this->selStmt = $this->dbConn->prepare(CustomerModel::SELECT_QUERY);
         $this->delStmt = $this->dbConn->prepare(CustomerModel::DELETE_QUERY);
+        $this->selWhrcIDStmt = $this->dbConn->prepare(CustomerModel::SELECT_WHERE_CUSTOMERID_QUERY);
     }
 
     /**
@@ -46,5 +49,12 @@ class CustomerModel {
     {
         return $this->delStmt->execute(array("CustomerID" => $CustomerID));
     }
+    
+    public function get($CustomerID)
+    {
+        $this->selWhrcIDStmt->execute(array("CustomerID" => $CustomerID));
+       return $this->selWhrcIDStmt->fetchAll(PDO::FETCH_ASSOC); 
+    }
+    
 
 }

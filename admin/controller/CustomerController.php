@@ -13,6 +13,9 @@ class CustomerController extends Controller {
         } else if ($page == "removeCustomer")
         {
             $this->removeCustomerAction();
+        } else if ($page == "getCustomer")
+        {
+            $this->getCustomerAction();
         }
     }
     
@@ -73,5 +76,23 @@ class CustomerController extends Controller {
         return $this->render("customerRemove", $data);
     }
         
+    
+    private function getCustomerAction()
+    {
+        $customerID = filter_input(INPUT_POST, "givenCustomerID");
+        $lastStep = filter_input(INPUT_POST, "lastStep");
+        $customerModel = $GLOBALS["customerModel"];
+        $Customers = $customerModel->get($customerID);
+        
+        $data = array(
+            "Customers" => $Customers,
+            "CustomerID" => $customerID,
+            "lastStep" => $lastStep,
+        );
+                
+        
+        return $this->render("customerGet", $data);
+    }
+    
     
 }

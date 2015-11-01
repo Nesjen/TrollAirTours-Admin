@@ -30,6 +30,14 @@ $FlightID = $GLOBALS["FlightID"];
                   <td><?php echo $SeatReservation["CustomerID"]; ?></td>
                   <td><?php echo $SeatReservation["BookingID"]; ?> </td>
                   <td>
+                        <form action="?page=getCustomer" method="post">
+                                        <input type="hidden" name="lastStep"  value="seatReservation" required>
+					<input type="hidden" name="givenCustomerID"  value="<?php echo $SeatReservation["CustomerID"]; ?>" required>
+					<button class="btn btn-default" type="submit">CustomerInfo</button>
+			</form>
+                  </td>
+                  
+                  <td>
                         <form action="?page=removeCustomer" method="post">
 					<input type="hidden" name="givenCustomerID"  value="<?php echo $Customer["CustomerID"]; ?>" required>
 					<button class="btn btn-default" type="submit">Remove</button>

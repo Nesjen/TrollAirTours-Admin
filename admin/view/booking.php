@@ -27,6 +27,13 @@ $Bookings = $GLOBALS["bookings"];
                   <td><?php echo $Bookings["BookingID"]; ?></td>
                   <td><?php echo $Bookings["CustomerID"]; ?></td>
                   <td>
+                        <form action="?page=getCustomer" method="post">
+                                        <input type="hidden" name="lastStep"  value="booking" required>
+					<input type="hidden" name="givenCustomerID"  value="<?php echo $Bookings["CustomerID"]; ?>" required>
+					<button class="btn btn-default" type="submit">CustomerInfo</button>
+			</form>
+                  </td>
+                  <td>
                         <form action="?page=removeCustomer" method="post">
 					<input type="hidden" name="givenCustomerID"  value="<?php echo $Bookings["BookingID"]; ?>" required>
 					<button class="btn btn-default" type="submit">Remove</button>

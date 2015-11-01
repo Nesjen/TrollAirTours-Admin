@@ -29,6 +29,13 @@ $CustomBookings = $GLOBALS["customBookings"];
                   <td><?php echo $CustomBookings["CustomerID"]; ?></td>
                   <td><?php echo $CustomBookings["CustomRequest"]; ?> </td>
                   <td>
+                        <form action="?page=getCustomer" method="post">
+                                        <input type="hidden" name="lastStep"  value="customBooking" required>
+					<input type="hidden" name="givenCustomerID"  value="<?php echo $CustomBookings["CustomerID"]; ?>" required>
+					<button class="btn btn-default" type="submit">CustomerInfo</button>
+			</form>
+                  </td>
+                  <td>
                         <form action="?page=removeCustomer" method="post">
 					<input type="hidden" name="givenCustomerID"  value="<?php echo $Customer["CustomerID"]; ?>" required>
 					<button class="btn btn-default" type="submit">Remove</button>
