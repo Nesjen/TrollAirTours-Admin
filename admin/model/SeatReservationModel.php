@@ -37,7 +37,7 @@ class SeatReservationModel {
     
     public function getAllWhereFlightID($FlightID)
     {
-       $this->selWhrFStmt->execute(array("FlightID" => $FlightID));
+       $this->selWhrFStmt->execute(array("flightID" => $FlightID));
        return $this->selWhrFStmt->fetchAll(PDO::FETCH_ASSOC); 
     }
 }
