@@ -31,14 +31,14 @@
             </div>
             <div class="col-md-4">
                 <a href="?page=product">
-                    <img class="center-block" src="image/flighticon.png "> 
+                    <img class="center-block" src="image/product.png "> 
                     <h3 class="row text-center">Product Manager</h3>
                 </a>
             </div>
             <div class="col-md-4">
                 <a href="#">
-                    <img class="center-block" src="image/flighttimeicon.png">
-                    <h3 class="row text-center">Flight Departures</h3>
+                    <img class="center-block" src="image/booking.png">
+                    <h3 class="row text-center">Booking Manager</h3>
                 </a>
             </div>
             
