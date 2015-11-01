@@ -36,7 +36,7 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="#">
+                <a href="?page=booking">
                     <img class="center-block" src="image/booking.png">
                     <h3 class="row text-center">Booking Manager</h3>
                 </a>
@@ -48,15 +48,15 @@
 
         <div class="row" style="padding-top: 5%;">
             <div class="col-md-4">
-                <a href="?page=aircraft">
-                    <img class="center-block" src="image/flighticon.png "> 
-                    <h3 class="row text-center">Aircraft Manager</h3>
+                <a href="?page=customBooking">
+                    <img class="center-block" src="image/bookingcustom.png "> 
+                    <h3 class="row text-center">Custom Bookings</h3>
                 </a>
             </div>
             <div class="col-md-4">
                 <a href="#">
                     <img class="center-block" src="image/flighttimeicon.png">
-                    <h3 class="row text-center">Flight Departures</h3>
+                    <h3 class="row text-center">Today Departures</h3>
                 </a>
             </div>
             <div class="col-md-4">

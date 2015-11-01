@@ -61,7 +61,10 @@ class Router {
                 case "removeEmployee":
                     return new EmployeeController();
 
-
+                case "customBooking":
+                case "booking":
+                    return new BookingController();
+                    
                 case "home":
                 default:
                     return new homeController();

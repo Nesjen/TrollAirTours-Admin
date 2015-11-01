@@ -1,12 +1,11 @@
 <?php
 
-$SeatReservations = $GLOBALS["seatReservations"];
+$CustomBookings = $GLOBALS["customBookings"];
 
-$FlightID = $GLOBALS["FlightID"];
 
 ?>
 
-<h1>Seat-reservations for flight <?php echo $FlightID ?> </h1>
+<h1>Custom Bookings</h1>
 
 <div class="row">
 
@@ -18,17 +17,17 @@ $FlightID = $GLOBALS["FlightID"];
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>SeatNumber</th>
-                <th>CustomerID</th>
                 <th>BookingID</th>
+                <th>CustomerID</th>
+                <th>Request</th>
             </tr>
             </thead>
             <tbody>
-          <?php foreach($SeatReservations as $SeatReservation): ?>
+          <?php foreach($CustomBookings as $CustomBookings): ?>
           <tr>
-                  <td><?php echo $SeatReservation["SeatNumber"]; ?></td>
-                  <td><?php echo $SeatReservation["CustomerID"]; ?></td>
-                  <td><?php echo $SeatReservation["BookingID"]; ?> </td>
+                  <td><?php echo $CustomBookings["BookingID"]; ?></td>
+                  <td><?php echo $CustomBookings["CustomerID"]; ?></td>
+                  <td><?php echo $CustomBookings["CustomRequest"]; ?> </td>
                   <td>
                         <form action="?page=removeCustomer" method="post">
 					<input type="hidden" name="givenCustomerID"  value="<?php echo $Customer["CustomerID"]; ?>" required>
@@ -45,7 +44,7 @@ $FlightID = $GLOBALS["FlightID"];
 
 
         </div>
-<a href="?page=flight">Go back to Flight list</a>.
+
     </div>
 
 </div>
