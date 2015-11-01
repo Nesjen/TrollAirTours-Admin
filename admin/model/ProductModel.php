@@ -1,20 +1,22 @@
 <?php
 
-class BookingModel {
+class ProductModel {
     private $dbConn;
 
-    const TABLE = "Booking";
-    const SELECT_QUERY = "SELECT * FROM " . BookingModel::TABLE;
-    const DELETE_QUERY = " DELETE FROM " . BookingModel::TABLE . " WHERE (CustomerID)=(:CustomerID)";   
+    const TABLE = "Product";
+    const SELECT_QUERY = "SELECT * FROM " . ProductModel::TABLE;
+    const INSERT_QUERY = "INSERT INTO " . ProductModel::TABLE . " (ProductID,ProductType,ProductName,ProductDescription) VALUES (:ProductID,:ProductType,:ProductName,:ProductDescription)";
+    const DELETE_QUERY = " DELETE FROM " . ProductModel::TABLE . " WHERE (ProductID)=(:ProductID)";   
 
     private $selStmt; // Select Statement
-
+    private $addStmt;
     private $delStmt;
 
     public function __construct(PDO $dbConn) {
         $this->dbConn = $dbConn;
-        $this->selStmt = $this->dbConn->prepare(BookingModel::SELECT_QUERY);
-        $this->delStmt = $this->dbConn->prepare(BookingModel::DELETE_QUERY);
+        $this->selStmt = $this->dbConn->prepare(ProductModel::SELECT_QUERY);
+        $this->addStmt = $this->dbConn->prepare(ProductModel::INSERT_QUERY);
+        $this->delStmt = $this->dbConn->prepare(ProductModel::DELETE_QUERY);
     }
 
   
@@ -24,9 +26,14 @@ class BookingModel {
     }
 
     
-    public function remove($CustomerID)
+    public function add($ProductID,$ProductType,$ProductName,$ProductDescription)
     {
-        return $this->delStmt->execute(array("CustomerID" => $CustomerID));
+         return $this->addStmt->execute(array("ProductID" => $ProductID,"ProductType" => $ProductType,"ProductName" => $ProductName,"ProductDescription" => $ProductDescription));
+    }
+    
+    public function remove($ProductID)
+    {
+        return $this->delStmt->execute(array("ProductID" => $ProductID));
     }
 
 }

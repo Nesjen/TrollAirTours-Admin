@@ -43,7 +43,11 @@ class Router {
                 case "addAircraft":
                     return new AircraftController();
 
-                
+                case "product":
+                case "addProduct":
+                case "removeProduct":
+                    return new ProductController();
+                    
                 case "customer":
                 case "addCustomer":
                 case "removeCustomer":

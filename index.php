@@ -9,7 +9,6 @@
 session_start();
 $_SESSION["AreLoggedIn"] = "false";
 
-
 require_once("admin/config.php");
 
 require_once("admin/model/db.php");

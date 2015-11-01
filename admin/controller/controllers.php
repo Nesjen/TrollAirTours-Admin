@@ -9,5 +9,5 @@ require_once("AircraftController.php");
 require_once("AdminUserController.php");
 require_once("FlightController.php");
 require_once ("CustomerController.php");
-
+require_once ("ProductController.php");
 
