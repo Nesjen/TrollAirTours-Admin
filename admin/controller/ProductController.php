@@ -34,10 +34,10 @@ class ProductController extends Controller {
         $givenProductType = filter_input(INPUT_POST, "givenProductType");
         $givenProductName = filter_input(INPUT_POST, "givenProductName");
         $givenProductDescription = filter_input(INPUT_POST, "givenProductDescription");
-        
+        $givenProductPrice = filter_input(INPUT_POST, "givenProductPrice");
 
         $productModel = $GLOBALS["productModel"];
-        $added = $productModel->add($givenProductID,$givenProductType,$givenProductName,$givenProductDescription);       
+        $added = $productModel->add($givenProductID,$givenProductType,$givenProductName,$givenProductDescription,$givenProductPrice);       
         
         $data = array(
             "added" => $added,

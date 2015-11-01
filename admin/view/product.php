@@ -17,9 +17,10 @@ $Products = $GLOBALS["products"];
             <thead>
             <tr>
                 <th>ProductID</th>
-                <th>ProductType</th>
-                <th>ProductName</th>
-                <th>ProductDescription</th>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
             </tr>
             </thead>
             <tbody>
@@ -29,7 +30,7 @@ $Products = $GLOBALS["products"];
                   <td><?php echo $Product["ProductType"]; ?></td>
                   <td><?php echo $Product["ProductName"]; ?></td>
                   <td><?php echo $Product["ProductDescription"]; ?></td>
-                  
+                  <td><?php echo $Product["ProductPrice"]; ?></td>
                   <td>
                         <form action="?page=removeProduct" method="post">
 					<input type="hidden" name="givenProductID"  value="<?php echo $Product["ProductID"]; ?>" required>
@@ -69,6 +70,10 @@ $Products = $GLOBALS["products"];
                         
                         <label for="inputProductDescription" class="sr-only">ProductDescription</label>
                         <input type="text" name="givenProductDescription" class="form-control" placeholder="ProductDescription"
+                               required>
+                        
+                        <label for="inputProductPrice" class="sr-only">ProductPrice</label>
+                        <input type="text" name="givenProductPrice" class="form-control" placeholder="ProductPrice"
                                required>
                         
                         

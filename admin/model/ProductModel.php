@@ -5,7 +5,7 @@ class ProductModel {
 
     const TABLE = "Product";
     const SELECT_QUERY = "SELECT * FROM " . ProductModel::TABLE;
-    const INSERT_QUERY = "INSERT INTO " . ProductModel::TABLE . " (ProductID,ProductType,ProductName,ProductDescription) VALUES (:ProductID,:ProductType,:ProductName,:ProductDescription)";
+    const INSERT_QUERY = "INSERT INTO " . ProductModel::TABLE . " (ProductID,ProductType,ProductName,ProductDescription,ProductPrice) VALUES (:ProductID,:ProductType,:ProductName,:ProductDescription,:ProductPrice)";
     const DELETE_QUERY = " DELETE FROM " . ProductModel::TABLE . " WHERE (ProductID)=(:ProductID)";   
 
     private $selStmt; // Select Statement
@@ -26,9 +26,9 @@ class ProductModel {
     }
 
     
-    public function add($ProductID,$ProductType,$ProductName,$ProductDescription)
+    public function add($ProductID,$ProductType,$ProductName,$ProductDescription,$ProductPrice)
     {
-         return $this->addStmt->execute(array("ProductID" => $ProductID,"ProductType" => $ProductType,"ProductName" => $ProductName,"ProductDescription" => $ProductDescription));
+         return $this->addStmt->execute(array("ProductID" => $ProductID,"ProductType" => $ProductType,"ProductName" => $ProductName,"ProductDescription" => $ProductDescription,"ProductPrice" => $ProductPrice));
     }
     
     public function remove($ProductID)

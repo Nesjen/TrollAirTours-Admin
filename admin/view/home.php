@@ -30,9 +30,9 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="?page=destination">
+                <a href="?page=product">
                     <img class="center-block" src="image/flighticon.png "> 
-                    <h3 class="row text-center">Destination Manager</h3>
+                    <h3 class="row text-center">Product Manager</h3>
                 </a>
             </div>
             <div class="col-md-4">
