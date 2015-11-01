@@ -33,6 +33,7 @@ class Router {
                 case "addFlight":
                 case "removeFlight":
                 case "flight":
+                case "flightsToday":
                     return new FlightController();
 
                 case "adminUser":

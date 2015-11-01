@@ -40,6 +40,7 @@ class FlightModel {
         return $this->selStmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    
     public function getAllWithFK()
     {
        $this->selWFKStmt->execute();

@@ -12,10 +12,27 @@ class FlightController extends Controller {
             $this->showFlightAction();
         }else if ($page == "removeFlight") {
             $this->removeFlightAction();
+        }else if ($page == "flightsToday") {
+            $this->showTodayFlightsAction();
         }
     }
     
-
+    
+    private function showTodayFlightsAction()
+    {
+        $flightModel = $GLOBALS["flightModel"];
+        //$preFlights = $flightModel->getAllPreToday();
+       // $customFlights = $flightModel->getAllCustomToday();
+        echo date("d.m");
+        $data = array(
+            "preFlights" => $preFlights,
+            "customFlights" => $customFlights,
+        );
+        
+        return $this->render("todayFlight", $data);
+    }
+        
+           
     private function showFlightAction() {
         $flightModel = $GLOBALS["flightModel"];
         $flights = $flightModel->getAll();
