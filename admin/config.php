@@ -1,4 +1,8 @@
 <?php
+/**
+ * Config setting for the Troll Air Tours Admin interface.
+ * Contains datebase access config and default page. 
+ */
 
 // Database access configuration
 $DB_USER = "booking";
@@ -7,5 +11,3 @@ $DB_HOST = "localhost";
 $DB_NAME = "BookingSystem";
 
 $DEFAULT_PAGE = "home";
-
-// TODO - define global configuration constants here

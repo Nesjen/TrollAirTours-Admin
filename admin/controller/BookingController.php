@@ -1,4 +1,9 @@
 <?php
+/**
+ * BookingController - Troll Air Tours Admin Interface.
+ * 
+ *  
+ */
 
 require_once("Controller.php");
 
