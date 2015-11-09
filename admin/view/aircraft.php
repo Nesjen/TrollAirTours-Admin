@@ -28,7 +28,6 @@ $RegID = $GLOBALS["RegID"];
                 <th>RegID</th>
                 <th>AircraftType</th>
                 <th>Number of seats</th>
-                <th>Number of crew</th>
             </tr>
             </thead>
             <tbody>
@@ -37,7 +36,6 @@ $RegID = $GLOBALS["RegID"];
                   <td><?php echo $Aircraft["RegID"]; ?></td>
                   <td><?php echo $Aircraft["AircraftType"]; ?></td>
                   <td><?php echo $Aircraft["NumberOfSeats"]; ?></td>
-                  <td><?php echo $Aircraft["NumberOfCrew"]; ?></td>
           </tr>
     <?php endforeach; ?>
             </tbody>
@@ -64,9 +62,6 @@ $RegID = $GLOBALS["RegID"];
                         <input type="text" name="givenNumberOfSeats" class="form-control" placeholder="NumberOfSeats"
                                required>
                         
-                        <label for="inputNumberOfCrew" class="sr-only">NumberOfCrew</label>
-                        <input type="text" name="givenNumberOfCrew" class="form-control" placeholder="NumberOfCrew"
-                                required>
                         
                         
                     </div>
