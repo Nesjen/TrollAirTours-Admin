@@ -36,22 +36,16 @@ class AircraftController extends Controller {
     
     
     private function addAircraftAction() {
-        // Find "customerName" parameter in request,
+
         $givenRegID = $_REQUEST["givenRegID"];
         $givenAircraftType = $_REQUEST["givenAircraftType"];
         $givenNumberOfSeats = $_REQUEST["givenNumberOfSeats"];
-        $givenNumberOfCrew = $_REQUEST["givenNumberOfCrew"];
-        if (!$givenRegID) {
-            // No customer name supplied, redirect to customer list
-            return $this->showAircraftAction();
-        }
 
-        // Try to add new customer, Set action response code - success or not
-        /** @var CustomerModel $customerModel */
+
         $aircraftModel = $GLOBALS["aircraftModel"];
-        $added = $aircraftModel->add($givenRegID,$givenAircraftType,$givenNumberOfSeats,$givenNumberOfCrew);
+        $added = $aircraftModel->add($givenRegID,$givenAircraftType,$givenNumberOfSeats);
 
-        // Render the page
+
         $data = array(
             "added" => $added,
             "givenRegID" => $givenRegID,

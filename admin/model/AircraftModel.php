@@ -6,7 +6,7 @@ class AircraftModel {
 
     const TABLE = "Aircraft";
     const SELECT_QUERY = "SELECT * FROM " . AircraftModel::TABLE;
-    const INSERT_QUERY = "INSERT INTO " . AircraftModel::TABLE . " (RegID,AircraftType,NumberOfSeats,NumberOfCrew) VALUES (:RegID,:AircraftType,:NumberOfSeats,:NumberOfCrew)";
+    const INSERT_QUERY = "INSERT INTO " . AircraftModel::TABLE . " (RegID,AircraftType,NumberOfSeats) VALUES (:RegID,:AircraftType,:NumberOfSeats)";
     const DELETE_QUERY = "DELETE FROM" . AircraftModel::TABLE . " WHERE RegID= ?";
 
     /** @var PDOStatement Statement for selecting all entries */
@@ -39,7 +39,7 @@ class AircraftModel {
      * @return bool true on success, false otherwise
      */
     public function add($givenRegID,$givenAircraftType,$givenNumberOfSeats,$givenNumberOFCrew) {
-        return $this->addStmt->execute(array("RegID" => $givenRegID,"AircraftType" => $givenAircraftType,"NumberOfSeats" => $givenNumberOfSeats,"NumberOfCrew" => $givenNumberOFCrew));
+        return $this->addStmt->execute(array("RegID" => $givenRegID,"AircraftType" => $givenAircraftType,"NumberOfSeats" => $givenNumberOfSeats));
     }
     
 
