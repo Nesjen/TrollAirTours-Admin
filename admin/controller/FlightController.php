@@ -20,13 +20,13 @@ class FlightController extends Controller {
     
     private function showTodayFlightsAction()
     {
+        $todayDate = date("20" . "y-d-m");
         $flightModel = $GLOBALS["flightModel"];
-        //$preFlights = $flightModel->getAllPreToday();
-       // $customFlights = $flightModel->getAllCustomToday();
-        echo date("d.m");
+        $preFlights = $flightModel->getAllPreToday($todayDate);
+        //$customFlights = $flightModel->getAllCustomToday($todayDate);
         $data = array(
             "preFlights" => $preFlights,
-            "customFlights" => $customFlights,
+            //"customFlights" => $customFlights,
         );
         
         return $this->render("todayFlight", $data);

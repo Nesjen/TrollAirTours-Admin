@@ -19,12 +19,16 @@ class FlightModel {
     const SELECT_QUERY_WFK = "SELECT * FROM " . FlightModel::TABLE . " INNER JOIN FlightCrew ON Flight.FlightID=FlightCrew.FlightID INNER JOIN Employee ON Flightcrew.EmployeeID=Employee.EmployeeID";
     const INSERT_QUERY = "INSERT INTO " . FlightModel::TABLE . " (FlightID,RegID,FlightDate,Departure,TourType,FlightPrice,SeatsAvailable) VALUES (:FlightID,:RegID,:FlightDate,:Departure,:TourType,:FlightPrice,:SeatsAvailable)";
     const DELETE_QUERY = "DELETE FROM " . FlightModel::TABLE . " WHERE (FlightID)=(:flightID)";
-
+    const SELECT_FLIGHT_DATE_QUERY = "SELECT * FROM " . FlightModel::TABLE . " WHERE FlightDate = ?";
+            
+    
+    
     private $selStmt;
     private $selFullFlightStmt;
     private $addStmt;
     private $selWFKStmt;
     private $delStmt;
+    private $selFlightByDateStmt;
 
     public function __construct(PDO $dbConn) {
         $this->dbConn = $dbConn;
@@ -33,6 +37,8 @@ class FlightModel {
         $this->selStmt = $this->dbConn->prepare(FlightModel::SELECT_QUERY);
         $this->selWFKStmt = $this->dbConn->prepare(FlightModel::SELECT_QUERY_WFK);
         $this->delStmt = $this->dbConn->prepare(FlightModel::DELETE_QUERY);
+        $this->selFlightByDateStmt = $this->dbConn->prepare(FlightModel::SELECT_FLIGHT_DATE_QUERY);
+
     }
 
     public function getAll() {
@@ -40,6 +46,12 @@ class FlightModel {
         return $this->selStmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    public function getAllPreToday($todayDate)
+    {
+        $this->selFlightByDateStmt->execute(array($todayDate));
+        return $this->selFlightByDateStmt->fetchAll(PDO::FETCH_ASSOC);
+        
+    }
     
     public function getAllWithFK()
     {
@@ -55,7 +67,6 @@ class FlightModel {
     
     public function removeFlightWhereID($flightID)
     {
-       echo $flightID;
        return $this->delStmt->execute(array("flightID" => $flightID)); 
     }
     

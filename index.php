@@ -9,7 +9,7 @@
 session_start();
 
 //Init of the AreLoggedIn Session variable, default false
-$_SESSION["AreLoggedIn"] = "false";
+$_SESSION["AreLoggedIn"] = false;
 
 
 //Gets all config data
@@ -34,7 +34,7 @@ $controller = $router->getLoginController();
 $controller->show($router->getPage());
 
 //Check if the user are logged in, if true the user will be redirected to the main index file.
-if($_SESSION["AreLoggedIn"] == "true")
+if($_SESSION["AreLoggedIn"] == true)
 {
     header("Location:admin/index.php");
 }
