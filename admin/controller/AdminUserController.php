@@ -1,9 +1,15 @@
 <?php
+//Controller for AdminUser page. 
+
 
 require_once("Controller.php");
 
 class AdminUserController extends Controller {
 
+    /**
+     * Show method - Uses the param param to redirect user to the correct function.
+     * @param type $page - Page to be displayed
+     */
     public function show($page) {
         if ($page == "addAdminUser") {
             $this->addAdminUserAction();
@@ -12,13 +18,16 @@ class AdminUserController extends Controller {
         }
     }
     
-
+    /**
+     * Default show page - Gets all adminusers and pass them to the render method.
+     * 
+     */
     private function showAdminUserAction() {
         $userModel = $GLOBALS["userModel"];
         $adminUsers = $userModel->getAll();
 
 
-        $tempAdminUsername = isset($_REQUEST["Username"]) ? $_REQUEST["Username"] : "";
+        $tempAdminUsername = filter_input(INPUT_POST,"Username");
         $adminUsername = htmlspecialchars($tempAdminUsername);
         
         $data = array(
@@ -30,10 +39,13 @@ class AdminUserController extends Controller {
         return $this->render("adminUser", $data);
     }
     
-    
+    /**
+     * Gets all post inputs from user and tries to add a new adminuser. Calls the render with the adminUser add page.
+     * 
+     */
     private function addAdminUserAction() {
-        $givenAdminUsername = $_REQUEST["givenAdminUsername"];
-        $givenAdminPassword = $_REQUEST["givenAdminPassword"];
+        $givenAdminUsername = filter_input(INPUT_POST,"givenAdminUsername");
+        $givenAdminPassword = filter_input(INPUT_POST,"givenAdminPassword");
         
         if (!$givenAdminUsername) {
             return $this->showCustomersAction();

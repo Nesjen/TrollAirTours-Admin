@@ -5,8 +5,8 @@ require_once("Controller.php");
 class AircraftController extends Controller {
 
     /**
-     * Shows all possible pages
-     * @param string $page
+     * Shows all possible pages within the aircraft controller
+     * @param string $page - The page to be rendered
      */
     public function show($page) {
         if ($page == "addAircraft") {
@@ -16,7 +16,10 @@ class AircraftController extends Controller {
         }
     }
     
-
+    /**
+     * 
+     * 
+     */
     private function showAircraftAction() {
         $aircraftModel = $GLOBALS["aircraftModel"];
         $aircrafts = $aircraftModel->getAll();
