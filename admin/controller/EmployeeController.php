@@ -13,6 +13,8 @@ class EmployeeController extends Controller {
             $this->addEmployeeAction();
         } else if ($page == "employee") {
             $this->showEmployeesAction();
+        }else if ($page == "removeEmployee") {
+            $this->removeEmployeeAction();
         }
     }
     
@@ -55,7 +57,33 @@ class EmployeeController extends Controller {
         return $this->render("employeeAdd", $data);
     }
    
-    
+    private function removeEmployeeAction()
+    {
+        $employeeID = filter_input(INPUT_POST,"givenEmployeeID");
+        $employeeModel = $GLOBALS["employeeModel"];
+        $flightCrewModel = $GLOBALS["flightCrewModel"];
+        $flightPilots = $flightCrewModel->getAllWherePilotID($employeeID);
+        $flightGuides = $flightCrewModel->getAllWhereGuideID($employeeID);
+        $feedBackText = "";
+        $added = true;
+        if((count($flightGuides) === 0)&&(count($flightPilots) === 0))
+        {
+            
+            $employeeModel->delete($employeeID);
+
+        }else
+        {
+            $added = false;
+            $feedBackText = "Could not remove employee, you have to remove all connected flight first.";  
+        }
+        $data = array(
+            "added" => $added,
+            "feedback" => $feedBackText,
+        );
+        
+        
+        return $this->render("employeeRemove", $data);
+    }
         
     
 }

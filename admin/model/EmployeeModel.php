@@ -9,7 +9,7 @@ class EmployeeModel {
     const SELECT_WHERE_QUERY = "SELECT * FROM " . EmployeeModel::TABLE . " WHERE Position = ?";
     const SELECT_WHERE_ID_QUERY = "SELECT * FROM " . EmployeeModel::TABLE . " WHERE EmployeeID = ?";
     const INSERT_QUERY = "INSERT INTO " . EmployeeModel::TABLE . " (EmployeeID,Position,FirstName,LastName) VALUES (:EmployeeID,:EmployeeP,:EmployeeFN,:EmployeeLN)";
-    const DELETE_QUERY = "DELETE FROM" . EmployeeModel::TABLE . " WHERE EmployeeID= ?";
+    const DELETE_QUERY = "DELETE FROM " . EmployeeModel::TABLE . " WHERE EmployeeID = ?";
 
     private $selStmt;
     private $addStmt;
@@ -50,7 +50,7 @@ class EmployeeModel {
     }
     
     public function delete($EmployeeID) {
-        return $this->delStmt->execute($EmployeeID);
+        return $this->delStmt->execute(array($EmployeeID));
     }
     
 }
