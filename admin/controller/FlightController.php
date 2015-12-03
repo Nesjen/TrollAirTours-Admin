@@ -114,6 +114,7 @@ class FlightController extends Controller {
         
         
         $added2 = $flightCrewModel->removeFlightWhereID($givenFlightID);
+        $added4 = $seatReservationModel->removeSeatReservationProduct($givenFlightID);
         $added3 = $seatReservationModel->removeFlightWhereID($givenFlightID);
         $added = $flightModel->removeFlightWhereID($givenFlightID);
         

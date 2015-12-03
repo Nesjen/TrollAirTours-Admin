@@ -8,7 +8,13 @@ $Employees = $GLOBALS["employees"];
 $pilots = $GLOBALS["pilots"];
 $guides = $GLOBALS["guides"];
 ?>
-
+<script>
+function confirmRemove() {
+    if (confirm("By removing this Flight, all seatreservations will be removed!") == true) {
+        document.getElementById("removeForm").submit();    
+    }
+}
+</script>
 
 <h1>Flights</h1>
 
@@ -49,9 +55,9 @@ $guides = $GLOBALS["guides"];
 			      </form>
                          </td>
                           <td>
-                              <form action="?page=removeFlight" method="post">
+                              <form id="removeForm" action="?page=removeFlight" method="post">
 					<input type="hidden" name="givenFlightID"  value="<?php echo $flightFkAndName["FlightID"]; ?>" required>
-					<button class="btn btn-default" type="submit"> Remove </button>
+                                        <button class="btn btn-default" onclick="confirmRemove()"> Remove </button>
 			      </form>
                           </td>
                   </tr>
