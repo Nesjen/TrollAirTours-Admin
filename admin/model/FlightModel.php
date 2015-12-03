@@ -20,6 +20,7 @@ class FlightModel {
     const INSERT_QUERY = "INSERT INTO " . FlightModel::TABLE . " (FlightID,RegID,FlightDate,Departure,TourType,FlightPrice,SeatsAvailable) VALUES (:FlightID,:RegID,:FlightDate,:Departure,:TourType,:FlightPrice,:SeatsAvailable)";
     const DELETE_QUERY = "DELETE FROM " . FlightModel::TABLE . " WHERE (FlightID)=(:flightID)";
     const SELECT_FLIGHT_DATE_QUERY = "SELECT * FROM " . FlightModel::TABLE . " WHERE FlightDate = ?";
+    const SELECT_FLIGHT_FROM_REGID_QUERY = "SELECT * FROM " . FlightModel::TABLE . " WHERE RegID = ? ";
             
     
     
@@ -29,6 +30,7 @@ class FlightModel {
     private $selWFKStmt;
     private $delStmt;
     private $selFlightByDateStmt;
+    private $selFlightByRegID;
 
     public function __construct(PDO $dbConn) {
         $this->dbConn = $dbConn;
@@ -38,12 +40,22 @@ class FlightModel {
         $this->selWFKStmt = $this->dbConn->prepare(FlightModel::SELECT_QUERY_WFK);
         $this->delStmt = $this->dbConn->prepare(FlightModel::DELETE_QUERY);
         $this->selFlightByDateStmt = $this->dbConn->prepare(FlightModel::SELECT_FLIGHT_DATE_QUERY);
+        $this->selFlightByRegID = $this->dbConn->prepare(FlightModel::SELECT_FLIGHT_FROM_REGID_QUERY);
+
 
     }
 
     public function getAll() {
         $this->selStmt->execute();
         return $this->selStmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    
+    //Gets all flight connected to given regID;
+    public function getAllByRegID($RegID)
+    {
+        $this->selFlightByRegID->execute(array($RegID));
+       return $this->selFlightByRegID->fetchAll(PDO::FETCH_ASSOC);
     }
     
     public function getAllPreToday($todayDate)

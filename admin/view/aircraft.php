@@ -13,6 +13,15 @@ $RegID = $GLOBALS["RegID"];
 
 ?>
 
+
+<script>
+function confirmRemove() {
+    if (confirm("By removing this Aircraft, all flights and seatreservations will be removed!") == true) {
+        document.getElementById("removeForm").submit();    
+    }
+}
+</script>
+
 <h1>Aircraft</h1>
 
 <div class="row">
@@ -36,6 +45,12 @@ $RegID = $GLOBALS["RegID"];
                   <td><?php echo $Aircraft["RegID"]; ?></td>
                   <td><?php echo $Aircraft["AircraftType"]; ?></td>
                   <td><?php echo $Aircraft["NumberOfSeats"]; ?></td>
+                  <td>
+                              <form id="removeForm" action="?page=removeAircraft" method="post">
+					<input type="hidden" name="RegID"  value="<?php echo $Aircraft["RegID"]; ?>" required>
+                                        <button class="btn btn-default" onclick="confirmRemove()"> Remove </button>
+			      </form>
+                 </td>
           </tr>
     <?php endforeach; ?>
             </tbody>

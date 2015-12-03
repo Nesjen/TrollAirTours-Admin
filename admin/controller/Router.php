@@ -45,6 +45,7 @@ class Router {
                     
                 case "aircraft":
                 case "addAircraft":
+                case "removeAircraft":
                     return new AircraftController();
 
                 case "product":

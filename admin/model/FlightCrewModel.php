@@ -39,7 +39,7 @@ class FlightCrewModel {
     
     public function removeFlightWhereID($flightID)
     {
-       echo $flightID . " Sletter fra Flightcrew..";
+       //echo $flightID . " Sletter fra Flightcrew..";
        return $this->delStmt->execute(array("flightID" => $flightID));
     }
 

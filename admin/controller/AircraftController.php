@@ -13,7 +13,9 @@ class AircraftController extends Controller {
             $this->addAircraftAction();
         } else if ($page == "aircraft") {
             $this->showAircraftAction();
-        }
+        } else if ($page == "removeAircraft") {
+            $this->removeAircraftAction();
+        } 
     }
     
     /**
@@ -56,7 +58,53 @@ class AircraftController extends Controller {
         return $this->render("aircraftAdd", $data);
     }
    
-    
+    private function removeAircraftAction() {
+        //Gets regID for the aircraft User wants to remove
+        $givenRegID = filter_input(INPUT_POST,"RegID");
+        
+        //Define boolean variables
+        $deleteSeatRes  = true;
+        $deleteSeatReservation  = true;
+        $deleteFlightCrew  = true;
+        $deleteFlight  = true;      
+        //Gets all needed models
+        $aircraftModel = $GLOBALS["aircraftModel"];
+        $flightModel = $GLOBALS["flightModel"];
+        $seatreservationModel = $GLOBALS["seatReservationModel"];
+        $flightCrewModel = $GLOBALS["flightCrewModel"];
+
+        //Gets an array with all flights connected to the given aircraft
+        $connectedFlights = $flightModel->getAllByRegID($givenRegID);
+        foreach($connectedFlights as $connectedFlight) //Loops all flights with given regID
+        {
+           $forFlightID = $connectedFlight["FlightID"] . " " ;
+           $deleteSeatRes = $seatreservationModel->removeSeatReservationProduct($forFlightID); //Deletes seatreservationproduct for given flight
+           $deleteSeatReservation = $seatreservationModel->removeFlightWhereID($forFlightID); //Deletes all seatreservation for given flight;
+           $deleteFlightCrew = $flightCrewModel->removeFlightWhereID($forFlightID); //Deletes all flightcrew for given flight
+           $deleteFlight = $flightModel->removeFlightWhereID($forFlightID); //Deletes all flights for given flightID
+           
+        }
+        
+        //deletes aircraft
+        $deleteAircraft = $aircraftModel->removeAircraftWhereID($givenRegID);
+
+        
+        //checks if all has been succesfully deleted
+        if(($deleteSeatRes)&&($deleteSeatReservation)&&($deleteFlightCrew)&&($deleteFlight)&&($deleteAircraft)&&($deleteAircraft))
+        {
+            $added = true;
+        }else
+        {
+            $added = false;
+        }
+        
+        $data = array(
+            "added" => $added,
+        );
+        
+        return $this->render("aircraftRemove", $data);
+        
+    }
         
     
 }

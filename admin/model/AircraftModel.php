@@ -7,12 +7,11 @@ class AircraftModel {
     const TABLE = "Aircraft";
     const SELECT_QUERY = "SELECT * FROM " . AircraftModel::TABLE;
     const INSERT_QUERY = "INSERT INTO " . AircraftModel::TABLE . " (RegID,AircraftType,NumberOfSeats) VALUES (:RegID,:AircraftType,:NumberOfSeats)";
-    const DELETE_QUERY = "DELETE FROM" . AircraftModel::TABLE . " WHERE RegID= ?";
+    const DELETE_QUERY = "DELETE FROM " . AircraftModel::TABLE . " WHERE RegID = ?";
 
-    /** @var PDOStatement Statement for selecting all entries */
     private $selStmt;
-    /** @var PDOStatement Statement for adding new entries */
     private $addStmt;
+    private $delStmt;
 
     public function __construct(PDO $dbConn) {
         $this->dbConn = $dbConn;
@@ -30,6 +29,12 @@ class AircraftModel {
         $this->selStmt->execute();
         return $this->selStmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    public function removeAircraftWhereID($RegID)
+    {
+       return $this->delStmt->execute(array($RegID)); 
+    }
+    
 
     /**
      * Try to add a new aircraft
