@@ -56,8 +56,9 @@ class ProductController extends Controller {
     {
         $givenProductID = filter_input(INPUT_POST, "givenProductID");
         $productModel = $GLOBALS["productModel"];
-        
+        $seatReservationModel = $GLOBALS["seatReservationModel"];
 
+        $seatReservationModel->removeSeatProductByPID($givenProductID);
         $added = $productModel->remove($givenProductID);
       
         $data = array(
