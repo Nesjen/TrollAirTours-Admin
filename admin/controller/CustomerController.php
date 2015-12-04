@@ -61,15 +61,27 @@ class CustomerController extends Controller {
         $customerModel = $GLOBALS["customerModel"];
         $bookingModel = $GLOBALS["bookingModel"];
         $seatReservationModel = $GLOBALS["seatReservationModel"];
+        $seatRows = $seatReservationModel->selectAllByCustomerID($givenCustomerID);
+        foreach($seatRows as $seatRow)
+        {
+            $seatnumber = $seatRow["SeatNumber"];
+            $flightID = $seatRow["FlightID"];
+            $seatProdRemoves = $seatReservationModel->removeSeatProductByFlightAndSeat($seatnumber,$flightID);
+            $SeatResRemoved = $seatReservationModel->removeBookingWhereCustID($givenCustomerID);
+
+
+        }
+        $seatProdRemoves = $seatReservationModel->removeSeatProdByCustomerID($givenCustomerID);
+
         
-        $SeatResRemoved = $seatReservationModel->removeBookingWhereCustID($givenCustomerID);
         $bookingRemoved =  $bookingModel->remove($givenCustomerID);
         $customerRemoved = $customerModel->remove($givenCustomerID);
         
         $data = array(
             "SeatResRemoved" => $SeatResRemoved,
             "bookingRemoved" => $bookingRemoved,
-            "customerRemoved" => $customerRemoved
+            "customerRemoved" => $customerRemoved,
+            "seatProdRemoved" => $seatProdRemoves,
         );
                 
         

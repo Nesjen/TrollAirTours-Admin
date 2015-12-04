@@ -8,6 +8,8 @@ class SeatReservationController extends Controller {
     public function show($page) {
         if ($page == "seatReservation") {
             $this->showSeatReservationAction();
+        }else if($page == "removeSeatReservation"){
+            $this->removeSeatReservationAction();
         }
     }
     
@@ -52,6 +54,29 @@ class SeatReservationController extends Controller {
     }
     
     
+    private function removeSeatReservationAction()
+    {
+        $seatNumber = filter_input(INPUT_POST, "givenSeatNumber");
+        $flightID = filter_input(INPUT_POST, "givenFlightID");
         
+        $seatReservationModel = $GLOBALS["seatReservationModel"];
+        
+        $seatReservationModel->removeSeatProductByFlightAndSeat($seatNumber,$flightID);
+        $added = $seatReservationModel->removeSeatByFlightAndSeat($seatNumber,$flightID);
+        
+        $data = array(
+            "added" => $added,
+            "FlightID" => $flightID,
+        );
+        
+        if($added)
+        {
+            return $this->render("SeatReservation", $data);
+        }else
+        {
+            return $this->render("SeatReservationRemove", $data);
+        }
+        
+    }
     
 }

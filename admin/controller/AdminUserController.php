@@ -15,6 +15,8 @@ class AdminUserController extends Controller {
             $this->addAdminUserAction();
         } else if ($page == "adminUser") {
             $this->showAdminUserAction();
+        } else if ($page == "removeAdminUser") {
+            $this->removeAdminUserAction();
         }
     }
     
@@ -60,6 +62,18 @@ class AdminUserController extends Controller {
         return $this->render("adminUserAdd", $data);
     }
    
+    
+    private function removeAdminUserAction()
+    {
+        $adminUsername = filter_input(INPUT_POST, "givenAdminUsername");
+        $adminUserModel = $GLOBALS["userModel"];
+        $added = $adminUserModel->remove($adminUsername);
+        
+        $data = array(
+            "added" => $added,
+        );
+        return $this->render("adminUserRemove", $data);
+    }
     
         
     

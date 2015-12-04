@@ -12,7 +12,13 @@ $adminUsers = $GLOBALS["adminUsers"];
 
 
 ?>
-
+<script>
+function confirmRemove() {
+    if (confirm("Are you sure you want to delete this user?") == true) {
+        document.getElementById("removeForm").submit();    
+    }
+}
+</script>
 <h1>AdminUsers</h1>
 
 <div class="row">
@@ -32,6 +38,13 @@ $adminUsers = $GLOBALS["adminUsers"];
           <?php foreach($adminUsers as $adminUser): ?>
           <tr>
                   <td><?php echo $adminUser["Username"]; ?></td>
+                  <td>  </td>
+                  <td>
+                              <form id="removeForm" action="?page=removeAdminUser" method="post">
+					<input type="hidden" name="givenAdminUsername"  value="<?php echo  $adminUser["Username"]; ?>" required>
+                                        <button class="btn btn-default" onclick="confirmRemove()"> Remove </button>
+			      </form>
+                  </td>
           </tr>
     <?php endforeach; ?>
             </tbody>

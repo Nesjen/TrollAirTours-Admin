@@ -7,7 +7,7 @@ class UserModel {
     const TABLE = "adminUsers";
     const SELECT_QUERY = "SELECT * FROM " . UserModel::TABLE;
     const INSERT_QUERY = "INSERT INTO " . UserModel::TABLE . " (Username,Password) VALUES (:givenAdminUsername,:givenAdminPassword)";
-    const DELETE_QUERY = "DELETE FROM" . UserModel::TABLE . " WHERE Username= ?";
+    const DELETE_QUERY = "DELETE FROM " . UserModel::TABLE . " WHERE Username= ?";
 
     private $selStmt;
     private $addStmt;
@@ -29,6 +29,10 @@ class UserModel {
         return $this->addStmt->execute(array("givenAdminUsername" => $givenAdminUsername,"givenAdminPassword" => sha1($givenAdminPassword)));
     }
     
-   
+    public function remove($adminUser)
+    {
+       return $this->delStmt->execute(array($adminUser));
+
+    }
 
 }

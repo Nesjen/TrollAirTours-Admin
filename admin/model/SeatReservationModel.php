@@ -14,12 +14,21 @@ class SeatReservationModel {
     const SELECT_SEATPRODUCTS_QUERY = "SELECT * FROM SeatReservation_Product WHERE (FlightID)=(:flightID)"; 
     const DELETE_SEATPRODUCUTS_QUERY = "DELETE FROM SeatReservation_Product WHERE (FlightID)=(:flightID)";
     const DELETE_CUSTOMER_QUERY = "DELETE FROM " . SeatReservationModel::TABLE . " WHERE (CustomerID)=(:customerID)";
+    const DELETE_SEAT_FLIGHT_QUERY = "DELETE FROM " . SeatReservationModel::TABLE . " WHERE (FlightID)=(:FlightID) AND (SeatNumber)=(:SeatNumber)";
+    const DELETE_SEAT_PROD_FLIGHT_QUERY = "DELETE FROM SeatReservation_Product WHERE (FlightID)=(:FlightID) AND (SeatNumber)=(:SeatNumber)";
+    const DELETE_SEAT_PROD_CUSTOMER_QUERY = "DELETE FROM SeatReservation_Product WHERE (CustomerID)=(:CustomerID)";
+    const SELECT_ALL_BY_CUSTOMER_ID = "SELECT * FROM " . SeatReservation::TABLE . " WHERE (CustomerID)=(:CostomerID)";
 
     private $delStmt;
     private $delCustStmt;
     private $selWhrFStmt;
+    private $selAllbyCustStmt;
     private $selSeatProdStmt;
     private $delSeatResProdStmt;
+    private $delSeatFlightStmt;
+    private $delSeatProdFlightStmt;
+    private $delSeatProdCustStmt;
+
 
     public function __construct(PDO $dbConn) {
         $this->dbConn = $dbConn;
@@ -29,11 +38,28 @@ class SeatReservationModel {
         //$this->selSeatProdStmt = $this->dbconn->prepare(SeatReservationModel::SELECT_SEATPRODUCTS_QUERY);
         $this->selSeatProdStmt = $this->dbConn->prepare(SeatReservationModel::SELECT_SEATPRODUCTS_QUERY);
         $this->delSeatResProdStmt = $this->dbConn->prepare(SeatReservationModel::DELETE_SEATPRODUCUTS_QUERY);
+        $this->delSeatFlightStmt = $this->dbConn->prepare(SeatReservationModel::DELETE_SEAT_FLIGHT_QUERY);
+        $this->delSeatProdFlightStmt = $this->dbConn->prepare(SeatReservationModel::DELETE_SEAT_PROD_FLIGHT_QUERY);
+        $this->delSeatProdCustStmt = $this->dbConn->prepare(SeatReservationModel::DELETE_SEAT_PROD_CUSTOMER_QUERY);
+        $this->delSeatProdCustStmt = $this->dbConn->prepare(SeatReservationModel::SELECT_ALL_BY_CUSTOMER_ID);
+
+
     }
 
+    public function selectAllByCustomerID($customerID)
+    {
+        $this->delSeatProdCustStmt->execute(array("CustomerID" => $customerID));
+       return $this->delSeatProdCustStmt->fetchAll(PDO::FETCH_ASSOC); 
+    }
+    
     public function removeFlightWhereID($flightID)
     {
        return $this->delStmt->execute(array("flightID" => $flightID));
+    }
+    
+    public function removeSeatProdByCustomerID($customerID)
+    {
+       return $this->delSeatProdCustStmt->execute(array("CustomerID" => $customerID));
     }
     
     
@@ -49,6 +75,17 @@ class SeatReservationModel {
        return $this->delCustStmt->execute(array("customerID" => $customerID));
     }
 
+    
+    public function removeSeatProductByFlightAndSeat($seatNumber,$flightID)
+    {
+       return $this->delSeatProdFlightStmt->execute(array("FlightID" => $flightID,  "SeatNumber" => $seatNumber));
+    }
+    
+    public function removeSeatByFlightAndSeat($seatNumber,$flightID)
+    {
+       return $this->delSeatFlightStmt->execute(array("FlightID" => $flightID,  "SeatNumber" => $seatNumber));
+    }
+    
     
     public function getAllWhereFlightID($FlightID)
     {

@@ -4,7 +4,9 @@ $SeatResRemoved = $GLOBALS["SeatResRemoved"];
 $bookingRemoved = $GLOBALS["bookingRemoved"];
 $customerRemoved = $GLOBALS["customerRemoved"];
 
-
+echo $SeatResRemoved;
+echo $bookingRemoved;
+echo $customerRemoved;
 ?>
 
 <?php if (($SeatResRemoved)&&($customerRemoved)&&($bookingRemoved) ){ 

@@ -38,9 +38,11 @@ class Router {
 
                 case "adminUser":
                 case "addAdminUser":
+                case "removeAdminUser":
                     return new AdminUserController();
 
                 case "seatReservation":
+                case "removeSeatReservation":
                     return new SeatReservationController();
                     
                 case "aircraft":

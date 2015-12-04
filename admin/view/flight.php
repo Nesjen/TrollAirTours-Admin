@@ -106,7 +106,7 @@ function confirmRemove() {
                             <option>Custom</option>
                         </select>
                         
-                        <label for="inputFlightPrice" class="sr-only">FlightPrice</label>
+                        <label for="inputFlightPrice" class="sr-only">FlightPrice in NOK</label>
                         <input type="text" name="givenFlightPrice" class="form-control" placeholder="FlightPrice"
                               required>
                         
@@ -120,11 +120,11 @@ function confirmRemove() {
                               required>
                         
                         <label for="inputFlightDate" class="sr-only">FlightDate</label>
-                        <input type="text" name="givenFlightDate" class="form-control" placeholder="FlightDate"
+                        <input type="text" name="givenFlightDate" class="form-control" placeholder="FlightDate (yyy-mm-dd)"
                                required>
                         
-                        <label for="inputDeparture" class="sr-only">Departure</label>
-                        <input type="text" name="givenDeparture" class="form-control" placeholder="Departure"
+                        <label for="inputDeparture" class="sr-only">Departure </label>
+                        <input type="text" name="givenDeparture" class="form-control" placeholder="Departure (hh:mm)"
                                 required>
                         
                      
