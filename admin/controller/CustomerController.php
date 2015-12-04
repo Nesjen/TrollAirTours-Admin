@@ -61,6 +61,7 @@ class CustomerController extends Controller {
         $customerModel = $GLOBALS["customerModel"];
         $bookingModel = $GLOBALS["bookingModel"];
         $seatReservationModel = $GLOBALS["seatReservationModel"];
+        $SeatResRemoved = true;
         $seatRows = $seatReservationModel->selectAllByCustomerID($givenCustomerID);
         foreach($seatRows as $seatRow)
         {

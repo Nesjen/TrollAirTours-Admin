@@ -71,7 +71,8 @@ class SeatReservationController extends Controller {
         
         if($added)
         {
-            return $this->render("SeatReservation", $data);
+            $GLOBALS["FlightID"] = $flightID;
+            return $this->showSeatReservationAction();
         }else
         {
             return $this->render("SeatReservationRemove", $data);
