@@ -16,7 +16,9 @@ class BookingController extends Controller {
             $this->ShowCustomBookingAction(); //Runs showCustomBookingAction()
         } else if ($page == "booking") { //Checks if page is set to 'booking'
             $this->showBookingAction(); //Runs showBookingAction()
-        } 
+        }  else if ($page == "bookingRemove") { 
+            $this->deleteBooking();
+        }
     }
     
 /*
@@ -52,6 +54,27 @@ class BookingController extends Controller {
     }
    
     
+    private function deleteBooking()
+    {
+        $bookingID = filter_input(INPUT_POST, "givenBookingID");
+        $customBooking = filter_input(INPUT_POST,"customBooking");
+        $bookingModel = $GLOBALS["bookingModel"]; //Gets booking-model
+        $added = $bookingModel->removeByBookingID($bookingID);
         
+        $data = array( 
+            "added" => $added,     
+        );
+        
+        if($customBooking == 1)
+        {
+            return $this->render("customBookingRemove", $data);
+
+        }else
+        {
+            return $this->render("bookingRemove", $data); 
+        }
+        
+        
+    }
     
 }

@@ -34,8 +34,9 @@ $Bookings = $GLOBALS["bookings"];
 			</form>
                   </td>
                   <td>
-                        <form action="?page=removeCustomer" method="post">
-					<input type="hidden" name="givenCustomerID"  value="<?php echo $Bookings["BookingID"]; ?>" required>
+                        <form action="?page=bookingRemove" method="post">
+					<input type="hidden" name="givenBookingID"  value="<?php echo $Bookings["BookingID"]; ?>" required>
+                                        <input type="hidden" name="customBooking"  value="0" required>
 					<button class="btn btn-default" type="submit">Remove</button>
 			</form>
                   </td>

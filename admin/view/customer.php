@@ -36,8 +36,9 @@ $Customers = $GLOBALS["customers"];
                   <td>
                         <form action="?page=removeCustomer" method="post">
 					<input type="hidden" name="givenCustomerID"  value="<?php echo $Customer["CustomerID"]; ?>" required>
-					<button class="btn btn-default" type="submit">Remove</button>
+					
 			</form>
+                      <button class="btn btn-default" type="submit">Remove</button>
                   </td>
 
           </tr>

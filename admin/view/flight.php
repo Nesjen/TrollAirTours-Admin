@@ -57,8 +57,9 @@ function confirmRemove() {
                           <td>
                               <form id="removeForm" action="?page=removeFlight" method="post">
 					<input type="hidden" name="givenFlightID"  value="<?php echo $flightFkAndName["FlightID"]; ?>" required>
-                                        <button class="btn btn-default" onclick="confirmRemove()"> Remove </button>
+                                        
 			      </form>
+                              <button class="btn btn-default" onclick="confirmRemove()"> Remove </button>
                           </td>
                   </tr>
                 <?php endforeach; ?>

@@ -68,6 +68,7 @@ class Router {
 
                 case "customBooking":
                 case "booking":
+                case "bookingRemove":
                     return new BookingController();
                     
                 case "home":
