@@ -9,7 +9,8 @@ class FlightCrewModel {
     const TABLE = "FlightCrew";
     const SELECT_WHERE_QUERY = "SELECT * FROM " . FlightCrewModel::TABLE . " WHERE FlightID= ?";
     const SELECT_QUERY = "SELECT * FROM " . FlightCrewModel::TABLE;
-    const INSERT_QUERY = "INSERT INTO " . FlightCrewModel::TABLE . " (FlightID,PilotID,GuideID) VALUES (:FlightIDFK,:PilotIDFK,:GuideIDFK)";
+    //-ORIGINAL- const INSERT_QUERY = "INSERT INTO " . FlightCrewModel::TABLE . " (FlightID,PilotID,GuideID) VALUES (:FlightIDFK,:PilotIDFK,:GuideIDFK)";
+    const INSERT_SINGLE_QUERY = "INSERT INTO " . FlightCrewModel::TABLE . " (FlightID,EmployeeID) VALUES (:FlightIDFK,:EmployeeIDFK)";
     const DELETE_QUERY = "DELETE FROM " . FlightCrewModel::TABLE . " WHERE (FlightID)=(:flightID)";
     const SELECT_ALL_PILOT_QUERY = "SELECT * FROM " . FlightCrewModel::TABLE . " WHERE PilotID = ? ";
     const SELECT_ALL_GUIDE_QUERY = "SELECT * FROM " . FlightCrewModel::TABLE . " WHERE GuideID = ? ";
@@ -21,10 +22,12 @@ class FlightCrewModel {
     private $delStmt;
     private $selPilotStmt;
     private $selGuideStmt;
+    private $addSingleStmt;
 
     public function __construct(PDO $dbConn) {
         $this->dbConn = $dbConn;
-        $this->addStmt = $this->dbConn->prepare(FlightCrewModel::INSERT_QUERY);
+        //$this->addStmt = $this->dbConn->prepare(FlightCrewModel::INSERT_QUERY);
+        $this->addSingleStmt = $this->dbConn->prepare(FlightCrewModel::INSERT_SINGLE_QUERY);
         $this->selWhrStmt = $this->dbConn->prepare(FlightCrewModel::SELECT_WHERE_QUERY);
         $this->selStmt = $this->dbConn->prepare(FlightCrewModel::SELECT_QUERY);
         $this->delStmt = $this->dbConn->prepare(FlightCrewModel::DELETE_QUERY);
@@ -59,13 +62,14 @@ class FlightCrewModel {
     }
 
     public function addSingle($givenFlightIDFK,$givenEmployeeIDFK) {
-        return $this->addStmt->execute(array("FlightIDFK" => $givenFlightIDFK,"EmployeeIDFK" => $givenEmployeeIDFK));
+        return $this->addSingleStmt->execute(array("FlightIDFK" => $givenFlightIDFK,"EmployeeIDFK" => $givenEmployeeIDFK));
     }
     
     public function addDual($givenPilotIDFK,$givenGuideIDFK,$givenFlightID)
     {
-         return $this->addStmt->execute(array("FlightIDFK" => $givenFlightID,"PilotIDFK" => $givenPilotIDFK,"GuideIDFK" => $givenGuideIDFK));
-        
+        //Orginal return $this->addStmt->execute(array("FlightIDFK" => $givenFlightID,"PilotIDFK" => $givenPilotIDFK,"GuideIDFK" => $givenGuideIDFK));
+        $this->addSingleStmt->execute(array("FlightIDFK" => $givenFlightID,"EmployeeIDFK" => $givenPilotIDFK)); //Adding Pilot
+        return $this->addSingleStmt->execute(array("FlightIDFK" => $givenFlightID,"EmployeeIDFK" => $givenGuideIDFK)); //Adding Guide
     }
     
 

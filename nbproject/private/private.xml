@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/SQL-WebServer/htdocs/Github/TrollAirTours-Admin/admin/controller/FlightController.php</file>
-            <file>file:/C:/SQL-WebServer/htdocs/Github/TrollAirTours-Admin/admin/view/todayFlight.php</file>
+            <file>file:/C:/SQL-WebServer/htdocs/Github/TrollAirTours-Admin/admin/view/bookingRemove.php</file>
+            <file>file:/C:/SQL-WebServer/htdocs/Github/TrollAirTours-Admin/admin/view/customBooking.php</file>
+            <file>file:/C:/SQL-WebServer/htdocs/Github/TrollAirTours-Admin/admin/view/booking.php</file>
+            <file>file:/C:/SQL-WebServer/htdocs/Github/TrollAirTours-Admin/admin/view/customer.php</file>
+            <file>file:/C:/SQL-WebServer/htdocs/Github/TrollAirTours-Admin/admin/controller/BookingController.php</file>
+            <file>file:/C:/SQL-WebServer/htdocs/Github/TrollAirTours-Admin/admin/view/employee.php</file>
+            <file>file:/C:/SQL-WebServer/htdocs/Github/TrollAirTours-Admin/admin/controller/CustomerController.php</file>
+            <file>file:/C:/SQL-WebServer/htdocs/Github/TrollAirTours-Admin/admin/view/product.php</file>
         </group>
     </open-files>
 </project-private>
