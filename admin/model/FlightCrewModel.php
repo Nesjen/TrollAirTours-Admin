@@ -12,7 +12,7 @@ class FlightCrewModel {
     //-ORIGINAL- const INSERT_QUERY = "INSERT INTO " . FlightCrewModel::TABLE . " (FlightID,PilotID,GuideID) VALUES (:FlightIDFK,:PilotIDFK,:GuideIDFK)";
     const INSERT_SINGLE_QUERY = "INSERT INTO " . FlightCrewModel::TABLE . " (FlightID,EmployeeID) VALUES (:FlightIDFK,:EmployeeIDFK)";
     const DELETE_QUERY = "DELETE FROM " . FlightCrewModel::TABLE . " WHERE (FlightID)=(:flightID)";
-    const SELECT_ALL_PILOT_QUERY = "SELECT * FROM " . FlightCrewModel::TABLE . " WHERE PilotID = ? ";
+    const SELECT_ALL_PILOT_QUERY = "SELECT * FROM " . FlightCrewModel::TABLE . " WHERE EmployeeID = ? ";
     const SELECT_ALL_GUIDE_QUERY = "SELECT * FROM " . FlightCrewModel::TABLE . " WHERE GuideID = ? ";
 
 
@@ -45,6 +45,11 @@ class FlightCrewModel {
         return $this->selStmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    public function getAllWhereEmployeeID($EmployeeID) {
+        $this->selPilotStmt->execute(array($EmployeeID));
+        return $this->selPilotStmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    /*
     public function getAllWherePilotID($PilotID) {
         $this->selPilotStmt->execute(array($PilotID));
         return $this->selPilotStmt->fetchAll(PDO::FETCH_ASSOC);
@@ -54,7 +59,7 @@ class FlightCrewModel {
         $this->selGuideStmt->execute(array($GuideID));
         return $this->selGuideStmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+    */
     public function removeFlightWhereID($flightID)
     {
        //echo $flightID . " Sletter fra Flightcrew..";

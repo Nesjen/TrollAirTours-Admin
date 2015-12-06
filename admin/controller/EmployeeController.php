@@ -62,11 +62,10 @@ class EmployeeController extends Controller {
         $employeeID = filter_input(INPUT_POST,"givenEmployeeID");
         $employeeModel = $GLOBALS["employeeModel"];
         $flightCrewModel = $GLOBALS["flightCrewModel"];
-        $flightPilots = $flightCrewModel->getAllWherePilotID($employeeID);
-        $flightGuides = $flightCrewModel->getAllWhereGuideID($employeeID);
+        $flightCrew = $flightCrewModel->getAllWhereEmployeeID($employeeID);
         $feedBackText = "";
         $added = true;
-        if((count($flightGuides) === 0)&&(count($flightPilots) === 0))
+        if(count($flightCrew) === 0)
         {
             
             $employeeModel->delete($employeeID);
