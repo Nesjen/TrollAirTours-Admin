@@ -47,8 +47,9 @@ function confirmRemove() {
                   <td>
                         <form id="removeForm" action="?page=removeEmployee" method="post">
 					<input type="hidden" name="givenEmployeeID"  value="<?php echo $Employee["EmployeeID"]; ?>" required>
-                                        <button class="btn btn-default" onclick="confirmRemove()"> Remove </button>
 			</form>
+                        <button class="btn btn-default" onclick="confirmRemove()"> Remove </button>
+
                   </td>
           </tr>
     <?php endforeach; ?>
