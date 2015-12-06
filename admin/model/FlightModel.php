@@ -26,7 +26,7 @@ class FlightModel {
                                         INNER JOIN Employee e1
                                         ON e1.EmployeeID = f1.EmployeeID AND e1.Position = 'Pilot'
                                         INNER JOIN Employee e2
-                                        ON e2.EmployeeID = f2.EmployeeID AND e2.Position = 'Guide'";
+                                        ON e2.EmployeeID = f2.EmployeeID AND e2.Position = 'Guide' ORDER BY FlightDate";
 
 
     
