@@ -85,10 +85,12 @@ class FlightController extends Controller {
         
         $flightModel = $GLOBALS["flightModel"];
         $added = $flightModel->add($givenFlightID,$givenRegIDFK,$FlightDate,$givenDeparture,$givenTourType,$givenFlightPrice,$givenSeatsAvailable);
-
+        $added2 = false;
         $flightCrewModel = $GLOBALS["flightCrewModel"];
-        
-        $added2 = $flightCrewModel->addDual($givenPilotIDFK,$givenGuideIDFK,$givenFlightID);
+        if($added)
+        {
+          $added2 = $flightCrewModel->addDual($givenPilotIDFK,$givenGuideIDFK,$givenFlightID);
+        }
         
         
         $data = array(

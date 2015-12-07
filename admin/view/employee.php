@@ -12,13 +12,6 @@ $EmployeeID = $GLOBALS["employeeID"];
 
 
 ?>
-<script>
-function confirmRemove() {
-    if (confirm("By removing this Employee, all flightcrew connected will be deleted!") == true) {
-        document.getElementById("removeForm").submit();    
-    }
-}
-</script>
 <h1>Employee</h1>
 
 <div class="row">
@@ -47,8 +40,9 @@ function confirmRemove() {
                   <td>
                         <form id="removeForm" action="?page=removeEmployee" method="post">
 					<input type="hidden" name="givenEmployeeID"  value="<?php echo $Employee["EmployeeID"]; ?>" required>
+                                        <button class="btn btn-default" type="submit"> Remove </button>
 			</form>
-                        <button class="btn btn-default" onclick="confirmRemove()"> Remove </button>
+                      
 
                   </td>
           </tr>

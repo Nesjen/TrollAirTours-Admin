@@ -3,13 +3,7 @@
 $Products = $GLOBALS["products"];
 
 ?>
-<script>
-function confirmRemove() {
-    if (confirm("By removing this Product, all productorders containing this element will be removed!") == true) {
-        document.getElementById("removeForm").submit();    
-    }
-}
-</script>
+
 <h1>Product</h1>
 
 <div class="row">
@@ -40,8 +34,9 @@ function confirmRemove() {
                   <td>
                         <form id="removeForm" action="?page=removeProduct" method="post">
 					<input type="hidden" name="givenProductID"  value="<?php echo $Product["ProductID"]; ?>" required>
+                                        <button class="btn btn-default" type="submit">Remove</button>
 			</form>
-                      	<button class="btn btn-default" onclick="confirmRemove()">Remove</button>
+                      	
 
                   </td>
 

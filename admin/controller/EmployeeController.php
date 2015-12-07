@@ -59,16 +59,18 @@ class EmployeeController extends Controller {
    
     private function removeEmployeeAction()
     {
-        $employeeID = filter_input(INPUT_POST,"givenEmployeeID");
+        $employeeIDDelete = filter_input(INPUT_POST,"givenEmployeeID");
         $employeeModel = $GLOBALS["employeeModel"];
         $flightCrewModel = $GLOBALS["flightCrewModel"];
-        $flightCrew = $flightCrewModel->getAllWhereEmployeeID($employeeID);
+        $flightCrew = $flightCrewModel->getAllWhereEmployeeID($employeeIDDelete);
         $feedBackText = "";
+        
+        
         $added = true;
         if(count($flightCrew) === 0)
         {
             
-            $employeeModel->delete($employeeID);
+            $employeeModel->delete($employeeIDDelete);
 
         }else
         {
